@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/grid_card.dart';
+import 'package:wikipets/views/cat/cat_list.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -28,7 +29,10 @@ class _HomeViewState extends State<HomeView> {
                 image: "cat.png",
                 title: "Cats",
                 color: Colors.pink.shade50,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CatListView()));
+                },
               ),
               CardItem(
                 image: "dog.png",

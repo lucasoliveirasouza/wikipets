@@ -10,6 +10,11 @@ class CatListView extends StatefulWidget {
 class _CatListViewState extends State<CatListView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Cats"),
+        backgroundColor: Colors.pink.shade100,
+      ),
+    );
   }
 }
