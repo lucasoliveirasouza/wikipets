@@ -25,7 +25,25 @@ class _DogListViewState extends State<DogListView> {
             itemCount: repositorio.dogs.length,
             itemBuilder: (BuildContext contexto, int dog) {
               final List<DogModel> lista = repositorio.dogs;
-              return ListTile(
+              return Container(
+                padding: EdgeInsets.only(right: 15, left: 15),
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        child: img.Image.network(lista[dog].image?.url ??
+                            "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
+                      ),
+                      Center(
+                        child: Text(lista[dog].name ?? ""),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+
+              ListTile(
                 title: Text(lista[dog].name ?? ""),
                 subtitle: Text(lista[dog].name ?? ""),
                 leading: SizedBox(
@@ -37,7 +55,7 @@ class _DogListViewState extends State<DogListView> {
                 onTap: () {},
               );
             },
-            separatorBuilder: (_, __) => Divider(),
+            separatorBuilder: (_, __) => Container(),
             padding: EdgeInsets.all(16),
           );
         },
