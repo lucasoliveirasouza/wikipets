@@ -28,7 +28,5 @@ class CatService extends ChangeNotifier {
       });
       notifyListeners();
     }
-
-    print(_cats.length);
   }
 }

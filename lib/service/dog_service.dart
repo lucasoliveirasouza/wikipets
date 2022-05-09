@@ -28,7 +28,5 @@ class DogService extends ChangeNotifier {
       });
       notifyListeners();
     }
-
-    print(_dogs.length);
   }
 }
