@@ -18,7 +18,6 @@ class CatService extends ChangeNotifier {
     final response = await http.get(Uri.parse(uri));
 
     if (response.statusCode == 200) {
-      print("entrei");
       final json = jsonDecode(response.body);
 
       List<dynamic> cats = json;
@@ -26,7 +25,6 @@ class CatService extends ChangeNotifier {
       cats.forEach((cat) {
         CatModel c = CatModel.fromJson(cat);
         _cats.add(c);
-        print(c.image?.url ?? '');
       });
       notifyListeners();
     }

@@ -18,7 +18,6 @@ class DogService extends ChangeNotifier {
     final response = await http.get(Uri.parse(uri));
 
     if (response.statusCode == 200) {
-      print("entrei");
       final json = jsonDecode(response.body);
 
       List<dynamic> dogs = json;
@@ -26,7 +25,6 @@ class DogService extends ChangeNotifier {
       dogs.forEach((dog) {
         DogModel c = DogModel.fromJson(dog);
         _dogs.add(c);
-        print(c.image?.url ?? '');
       });
       notifyListeners();
     }
