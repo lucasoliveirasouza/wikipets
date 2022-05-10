@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:wikipets/componentes/rating_card.dart';
 import 'package:wikipets/models/cat_model.dart';
 
 class CatView extends StatefulWidget {
@@ -51,89 +52,110 @@ class _CatViewState extends State<CatView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                color: Colors.pink.shade100,
-                child: Card(
-                  child: Container(
-                    color: Colors.pink.shade50,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          child: RatingBarIndicator(
-                            rating: double.parse(
-                                widget.cat.adaptability.toString()),
-                            itemBuilder: (context, index) => Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                            itemCount: 5,
-                            itemSize: 30,
-                            direction: Axis.horizontal,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                          height: 35,
-                          child: Text(
-                            "Adaptability",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.pink,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              RatingItem(
+                rating: double.parse(widget.cat.adaptability.toString()),
+                title: "Adaptability",
               ),
               Container(
                 width: 20,
               ),
-              Container(
-                color: Colors.pink.shade100,
-                child: Card(
-                  child: Container(
-                    color: Colors.pink.shade50,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          child: RatingBarIndicator(
-                            rating:
-                                double.parse(widget.cat.dogFriendly.toString()),
-                            itemBuilder: (context, index) => Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                            itemCount: 5,
-                            itemSize: 30,
-                            direction: Axis.horizontal,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                          height: 35,
-                          child: Text(
-                            "Dog Friendly",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.pink,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              RatingItem(
+                rating: double.parse(widget.cat.affectionLevel.toString()),
+                title: "Affection",
               ),
             ],
-          )
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RatingItem(
+                rating: double.parse(widget.cat.childFriendly.toString()),
+                title: "Child Friendly",
+              ),
+              Container(
+                width: 20,
+              ),
+              RatingItem(
+                rating: double.parse(widget.cat.dogFriendly.toString()),
+                title: "Dog Friendly",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RatingItem(
+                rating: double.parse(widget.cat.energyLevel.toString()),
+                title: "Energy Level",
+              ),
+              Container(
+                width: 20,
+              ),
+              RatingItem(
+                rating: double.parse(widget.cat.grooming.toString()),
+                title: "Grooming",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RatingItem(
+                rating: double.parse(widget.cat.healthIssues.toString()),
+                title: "Health Issues",
+              ),
+              Container(
+                width: 20,
+              ),
+              RatingItem(
+                rating: double.parse(widget.cat.intelligence.toString()),
+                title: "Intelligence ",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RatingItem(
+                rating: double.parse(widget.cat.sheddingLevel.toString()),
+                title: "Shedding Level",
+              ),
+              Container(
+                width: 20,
+              ),
+              RatingItem(
+                rating: double.parse(widget.cat.socialNeeds.toString()),
+                title: "Social Needs ",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RatingItem(
+                rating: double.parse(widget.cat.strangerFriendly.toString()),
+                title: "Stranger Friendly",
+              ),
+              Container(
+                width: 20,
+              ),
+            ],
+          ),
         ],
       ),
     );
