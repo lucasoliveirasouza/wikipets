@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/models/dog_model.dart';
 import 'package:wikipets/service/dog_service.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
+import 'package:wikipets/views/dog/dog.dart';
 
 class DogListView extends StatefulWidget {
   const DogListView({Key? key}) : super(key: key);
@@ -26,7 +28,12 @@ class _DogListViewState extends State<DogListView> {
             itemBuilder: (BuildContext contexto, int dog) {
               final List<DogModel> lista = repositorio.dogs;
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DogView(dog: lista[dog])));
+                },
                 child: Container(
                   padding: EdgeInsets.only(),
                   child: Card(
