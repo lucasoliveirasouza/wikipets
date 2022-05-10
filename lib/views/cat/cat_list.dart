@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wikipets/models/cat_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
 import 'package:wikipets/service/cat_service.dart';
+import 'package:wikipets/views/cat/cat.dart';
 
 class CatListView extends StatefulWidget {
   const CatListView({Key? key}) : super(key: key);
@@ -27,7 +28,12 @@ class _CatListViewState extends State<CatListView> {
             itemBuilder: (BuildContext contexto, int cat) {
               final List<CatModel> lista = repositorio.cats;
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CatView(cat: lista[cat])));
+                },
                 child: Container(
                   padding: EdgeInsets.only(),
                   child: Card(
