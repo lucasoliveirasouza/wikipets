@@ -25,31 +25,34 @@ class _DogListViewState extends State<DogListView> {
             itemCount: repositorio.dogs.length,
             itemBuilder: (BuildContext contexto, int dog) {
               final List<DogModel> lista = repositorio.dogs;
-              return Container(
-                padding: EdgeInsets.only(),
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        child: img.Image.network(lista[dog].image?.url ??
-                            "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
-                      ),
-                      Container(
-                        height: 35,
-                        color: Colors.pink.shade100,
-                        child: Center(
-                          child: Text(
-                            lista[dog].name ?? "",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+              return GestureDetector(
+                onTap: () {},
+                child: Container(
+                  padding: EdgeInsets.only(),
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          child: img.Image.network(lista[dog].image?.url ??
+                              "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
+                        ),
+                        Container(
+                          height: 35,
+                          color: Colors.pink.shade100,
+                          child: Center(
+                            child: Text(
+                              lista[dog].name ?? "",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );
