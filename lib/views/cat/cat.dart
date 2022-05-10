@@ -154,6 +154,10 @@ class _CatViewState extends State<CatView> {
               Container(
                 width: 20,
               ),
+              RatingItem(
+                rating: double.parse(widget.cat.vocalisation.toString()),
+                title: "Vocalisation",
+              ),
             ],
           ),
         ],
