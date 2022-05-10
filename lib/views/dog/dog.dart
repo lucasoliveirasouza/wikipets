@@ -15,7 +15,6 @@ class _DogViewState extends State<DogView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.dog.name ?? ""),
-        backgroundColor: Colors.pink.shade100,
       ),
     );
   }
