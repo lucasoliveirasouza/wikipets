@@ -35,9 +35,20 @@ class _DogListViewState extends State<DogListView> {
                         child: img.Image.network(lista[dog].image?.url ??
                             "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
                       ),
-                      Center(
-                        child: Text(lista[dog].name ?? ""),
-                      ),
+                      Container(
+                        height: 35,
+                        color: Colors.pink.shade100,
+                        child: Center(
+                          child: Text(
+                            lista[dog].name ?? "",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
