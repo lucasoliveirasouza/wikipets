@@ -169,7 +169,7 @@ class _CatViewState extends State<CatView> {
 
   Widget overview() {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.only(left: 15, right: 15, top: 10),
       child: ListView(
         children: [
           SizedBox(
