@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/rating_card.dart';
+import 'package:wikipets/componentes/row_table.dart';
 import 'package:wikipets/models/cat_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
 
@@ -211,6 +212,27 @@ class _CatViewState extends State<CatView> {
           ),
           SizedBox(
             height: 10,
+          ),
+          RowTable(
+            valor: widget.cat.origin.toString(),
+            title: "Origin:",
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          RowTable(
+            valor: "${widget.cat.lifeSpan.toString()} years",
+            title: "Life span:",
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          RowTable(
+            valor: "${widget.cat.weight?.metric.toString()} kilograms",
+            title: "Weight:",
+          ),
+          SizedBox(
+            height: 3,
           ),
         ],
       ),
