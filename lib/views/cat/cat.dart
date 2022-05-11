@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/rating_card.dart';
 import 'package:wikipets/componentes/row_table.dart';
+import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/cat_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
 
@@ -21,7 +22,7 @@ class _CatViewState extends State<CatView> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.cat.name ?? ""),
-          backgroundColor: Colors.pink.shade100,
+          backgroundColor: color2,
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
@@ -169,16 +170,13 @@ class _CatViewState extends State<CatView> {
 
   Widget overview() {
     return Container(
-      padding: EdgeInsets.only(left: 15, right: 15, top: 10),
+      padding: EdgeInsets.only(left: 15, right: 15, top: 15),
       child: ListView(
         children: [
-          SizedBox(
-            height: 10,
-          ),
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.pink.shade100,
+                color: color2,
                 style: BorderStyle.solid,
                 width: 5.0,
               ),
@@ -195,18 +193,18 @@ class _CatViewState extends State<CatView> {
             padding: EdgeInsets.only(top: 2, bottom: 2, left: 5, right: 5),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.pink.shade100,
+                color: color2,
                 style: BorderStyle.solid,
                 width: 2.0,
               ),
-              color: Colors.pink.shade50,
+              color: color1,
               borderRadius: BorderRadius.circular(2.0),
             ),
             child: Text(
               widget.cat.description ?? "",
               textAlign: TextAlign.justify,
               style: TextStyle(
-                color: Colors.pink,
+                color: color3,
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/row_table.dart';
+import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/dog_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
 
@@ -50,13 +51,16 @@ class _DogViewState extends State<DogView> {
                   style: BorderStyle.solid,
                   width: 2.0,
                 ),
-                color: Colors.pink.shade50,
+                color: color1,
                 borderRadius: BorderRadius.circular(2.0),
               ),
               child: Text(
                 widget.dog.temperament.toString(),
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.pink, fontSize: 18),
+                style: TextStyle(
+                  color: color3,
+                  fontSize: 18,
+                ),
               ),
             ),
             SizedBox(

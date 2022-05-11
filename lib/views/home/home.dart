@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/grid_card.dart';
+import 'package:wikipets/constantes.dart';
 import 'package:wikipets/views/cat/cat_list.dart';
 import 'package:wikipets/views/dog/dog_list.dart';
 
@@ -16,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Pets"),
-        backgroundColor: Colors.pink.shade100,
+        backgroundColor: color2,
       ),
       body: Container(
         child: GridView.count(
@@ -29,7 +30,7 @@ class _HomeViewState extends State<HomeView> {
               CardItem(
                 image: "cat.png",
                 title: "Cats",
-                color: Colors.pink.shade50,
+                color: color1,
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => CatListView()));
@@ -38,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
               CardItem(
                 image: "dog.png",
                 title: "Dogs",
-                color: Colors.pink.shade50,
+                color: color1,
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => DogListView()));

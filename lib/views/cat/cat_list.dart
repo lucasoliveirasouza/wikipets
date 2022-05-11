@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/cat_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
 import 'package:wikipets/service/cat_service.dart';
@@ -19,7 +20,7 @@ class _CatListViewState extends State<CatListView> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cats"),
-        backgroundColor: Colors.pink.shade100,
+        backgroundColor: color2,
       ),
       body: Consumer<CatService>(
         builder: (context, repositorio, child) {
@@ -46,7 +47,7 @@ class _CatListViewState extends State<CatListView> {
                         ),
                         Container(
                           height: 35,
-                          color: Colors.pink.shade100,
+                          color: color2,
                           child: Center(
                             child: Text(
                               lista[cat].name ?? "",

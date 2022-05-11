@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/dog_model.dart';
 import 'package:wikipets/service/dog_service.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
@@ -18,7 +19,7 @@ class _DogListViewState extends State<DogListView> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Dogs"),
-        backgroundColor: Colors.pink.shade100,
+        backgroundColor: color2,
       ),
       body: Consumer<DogService>(
         builder: (context, repositorio, child) {
@@ -45,7 +46,7 @@ class _DogListViewState extends State<DogListView> {
                         ),
                         Container(
                           height: 35,
-                          color: Colors.pink.shade100,
+                          color: color2,
                           child: Center(
                             child: Text(
                               lista[dog].name ?? "",
