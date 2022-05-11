@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/rating_card.dart';
 import 'package:wikipets/models/cat_model.dart';
+import 'package:flutter/src/widgets/image.dart' as img;
 
 class CatView extends StatefulWidget {
   CatModel cat;
@@ -165,6 +167,53 @@ class _CatViewState extends State<CatView> {
   }
 
   Widget overview() {
-    return Container();
+    return Container(
+      padding: EdgeInsets.all(15),
+      child: ListView(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.pink.shade100,
+                style: BorderStyle.solid,
+                width: 5.0,
+              ),
+            ),
+            child: SizedBox(
+              child: img.Image.network(widget.cat.image?.url ??
+                  "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 2, bottom: 2, left: 5, right: 5),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.pink.shade100,
+                style: BorderStyle.solid,
+                width: 2.0,
+              ),
+              color: Colors.pink.shade50,
+              borderRadius: BorderRadius.circular(2.0),
+            ),
+            child: Text(
+              widget.cat.description ?? "",
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                color: Colors.pink,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+        ],
+      ),
+    );
   }
 }

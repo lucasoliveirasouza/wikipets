@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/models/dog_model.dart';
 import 'package:wikipets/service/dog_service.dart';
