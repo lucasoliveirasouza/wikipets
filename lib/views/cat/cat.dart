@@ -249,7 +249,43 @@ class _CatViewState extends State<CatView> {
             title: "Weight:",
           ),
           SizedBox(
-            height: 3,
+            height: 15,
+          ),
+          Container(
+            height: 35,
+            child: Center(
+              child: TextButton(
+                child: Text("Wikipedia"),
+                onPressed: () {},
+              ),
+            ),
+          ),
+          Container(
+            height: 35,
+            child: Center(
+              child: TextButton(
+                child: Text("CFA"),
+                onPressed: () {},
+              ),
+            ),
+          ),
+          Container(
+            height: 35,
+            child: Center(
+              child: TextButton(
+                child: Text("Acessar"),
+                onPressed: () {},
+              ),
+            ),
+          ),
+          Container(
+            height: 35,
+            child: Center(
+              child: TextButton(
+                child: Text("Acessar"),
+                onPressed: () {},
+              ),
+            ),
           ),
         ],
       ),
