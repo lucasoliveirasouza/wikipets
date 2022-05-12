@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:wikipets/constantes.dart';
 
 class RatingItem extends StatelessWidget {
   String title;
@@ -13,10 +14,10 @@ class RatingItem extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.pink.shade100,
+      color: color2,
       child: Card(
         child: Container(
-          color: Colors.pink.shade50,
+          color: color1,
           child: Column(
             children: [
               SizedBox(
@@ -41,7 +42,7 @@ class RatingItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.pink,
+                    color: color3,
                   ),
                 ),
               ),

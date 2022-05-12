@@ -139,8 +139,8 @@ class _CatViewState extends State<CatView> {
                 width: 20,
               ),
               RatingItem(
-                rating: double.parse(widget.cat.socialNeeds.toString()),
-                title: "Social Needs ",
+                rating: double.parse(widget.cat.shortLegs.toString()),
+                title: "Short legs ",
               ),
             ],
           ),
@@ -153,6 +153,25 @@ class _CatViewState extends State<CatView> {
               RatingItem(
                 rating: double.parse(widget.cat.strangerFriendly.toString()),
                 title: "Stranger Friendly",
+              ),
+              Container(
+                width: 20,
+              ),
+              RatingItem(
+                rating: double.parse(widget.cat.socialNeeds.toString()),
+                title: "Social Needs ",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RatingItem(
+                rating: double.parse(widget.cat.suppressedTail.toString()),
+                title: "Suppressed tail",
               ),
               Container(
                 width: 20,

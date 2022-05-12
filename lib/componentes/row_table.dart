@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wikipets/constantes.dart';
 
 class RowTable extends StatelessWidget {
   String title;
@@ -21,11 +22,11 @@ class RowTable extends StatelessWidget {
                 title,
                 textAlign: TextAlign.right,
                 style: TextStyle(
-                  color: Colors.pink,
+                  color: color3,
                   fontSize: 15,
                 ),
               ),
-              color: Colors.pink.shade50,
+              color: color1,
             ),
             Container(
               padding: EdgeInsets.only(left: 5, top: 5, bottom: 5),
@@ -34,7 +35,7 @@ class RowTable extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.pink,
+                  color: color3,
                 ),
               ),
             )

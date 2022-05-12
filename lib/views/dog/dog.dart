@@ -18,7 +18,7 @@ class _DogViewState extends State<DogView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.dog.name ?? ""),
-        backgroundColor: Colors.pink.shade100,
+        backgroundColor: color2,
       ),
       body: Container(
         padding: EdgeInsets.only(left: 15, right: 15, top: 10),
@@ -30,7 +30,7 @@ class _DogViewState extends State<DogView> {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.pink.shade100,
+                  color: color2,
                   style: BorderStyle.solid,
                   width: 5.0,
                 ),
@@ -47,7 +47,7 @@ class _DogViewState extends State<DogView> {
               padding: EdgeInsets.only(top: 2, bottom: 2, left: 5, right: 5),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.pink.shade100,
+                  color: color2,
                   style: BorderStyle.solid,
                   width: 2.0,
                 ),
