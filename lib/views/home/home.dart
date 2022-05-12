@@ -45,6 +45,15 @@ class _HomeViewState extends State<HomeView> {
                       MaterialPageRoute(builder: (context) => DogListView()));
                 },
               ),
+              CardItem(
+                image: "star.png",
+                title: "Favorites",
+                color: color1,
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DogListView()));
+                },
+              ),
             ]),
       ),
     );
