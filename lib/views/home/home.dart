@@ -3,6 +3,8 @@ import 'package:wikipets/componentes/grid_card.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/views/cat/cat_list.dart';
 import 'package:wikipets/views/dog/dog_list.dart';
+import 'package:wikipets/views/favorites/favorite.dart';
+import 'package:wikipets/views/forum/forum.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -51,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
                 color: color1,
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DogListView()));
+                      MaterialPageRoute(builder: (context) => FavoriteView()));
                 },
               ),
               CardItem(
@@ -60,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                 color: color1,
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DogListView()));
+                      MaterialPageRoute(builder: (context) => ForumView()));
                 },
               ),
             ]),
