@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wikipets/componentes/rating_card.dart';
 import 'package:wikipets/componentes/row_table.dart';
 import 'package:wikipets/constantes.dart';
@@ -249,46 +251,74 @@ class _CatViewState extends State<CatView> {
             title: "Weight:",
           ),
           SizedBox(
-            height: 15,
+            height: 30,
           ),
-          Container(
-            height: 35,
-            child: Center(
-              child: TextButton(
-                child: Text("Wikipedia"),
-                onPressed: () {},
-              ),
+          Center(
+            child: Text(
+              "More information:",
+              style: TextStyle(fontSize: 18, color: color3),
             ),
           ),
-          Container(
-            height: 35,
-            child: Center(
-              child: TextButton(
-                child: Text("CFA"),
-                onPressed: () {},
+          ButtonBar(
+            alignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed: () {
+                  openUrl(widget.cat.vcahospitalsUrl.toString());
+                },
+                child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: img.Image.asset("assets/images/VCA.png"),
+                ),
               ),
-            ),
-          ),
-          Container(
-            height: 35,
-            child: Center(
-              child: TextButton(
-                child: Text("Acessar"),
-                onPressed: () {},
+              TextButton(
+                onPressed: () {
+                  openUrl(widget.cat.wikipediaUrl.toString());
+                },
+                child: SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: img.Image.asset("assets/images/wikipedia.png"),
+                ),
               ),
-            ),
-          ),
-          Container(
-            height: 35,
-            child: Center(
-              child: TextButton(
-                child: Text("Acessar"),
-                onPressed: () {},
+              TextButton(
+                onPressed: () {
+                  openUrl(widget.cat.cfaUrl.toString());
+                },
+                child: SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: img.Image.asset("assets/images/cfa.png"),
+                ),
               ),
-            ),
+              TextButton(
+                onPressed: () {
+                  openUrl(widget.cat.vetstreetUrl);
+                },
+                child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: img.Image.asset("assets/images/vetstreet.png"),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
+  }
+
+  openBrowser(url) async {
+    FlutterWebBrowser.openWebPage(url: url);
+  }
+
+  void openUrl(url) async {
+    if (await canLaunch(url)) {
+      await launch('$url');
+      print("É possível abrir a URL");
+    } else {
+      print("Não è possível abrir a URL");
+    }
   }
 }
