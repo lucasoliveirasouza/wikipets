@@ -25,6 +25,25 @@ class _CatViewState extends State<CatView> {
         appBar: AppBar(
           title: Text(widget.cat.name ?? ""),
           backgroundColor: color2,
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  if (widget.cat.starValue) {
+                    widget.cat.star = "assets/images/starA.png";
+                    widget.cat.starValue = false;
+                  } else {
+                    widget.cat.star = "assets/images/starB.png";
+                    widget.cat.starValue = true;
+                  }
+                });
+              },
+              child: Container(
+                height: 30,
+                child: img.Image.asset(widget.cat.star),
+              ),
+            ),
+          ],
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
