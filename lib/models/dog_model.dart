@@ -10,6 +10,8 @@ class DogModel {
   String? referenceImageId;
   String? temperament;
   Height? weight;
+  String star = "assets/images/starB.png";
+  bool starValue = false;
 
   DogModel(
       {this.bredFor,

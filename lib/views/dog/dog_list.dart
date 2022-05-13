@@ -27,39 +27,68 @@ class _DogListViewState extends State<DogListView> {
             itemCount: repositorio.dogs.length,
             itemBuilder: (BuildContext contexto, int dog) {
               final List<DogModel> lista = repositorio.dogs;
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DogView(dog: lista[dog])));
-                },
-                child: Container(
-                  padding: EdgeInsets.only(),
-                  child: Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: [
-                        SizedBox(
+              return Container(
+                padding: EdgeInsets.only(),
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DogView(
+                                        dog: lista[dog],
+                                      )));
+                        },
+                        child: SizedBox(
                           child: img.Image.network(lista[dog].image?.url ??
                               "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
                         ),
-                        Container(
+                      ),
+                      Container(
                           height: 35,
                           color: color2,
-                          child: Center(
-                            child: Text(
-                              lista[dog].name ?? "",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
                               ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                              Text(
+                                lista[dog].name ?? "",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    if (lista[dog].starValue) {
+                                      lista[dog].star =
+                                          "assets/images/starA.png";
+                                      lista[dog].starValue = false;
+                                    } else {
+                                      lista[dog].star =
+                                          "assets/images/starB.png";
+                                      lista[dog].starValue = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  height: 25,
+                                  child: img.Image.asset(lista[dog].star),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                            ],
+                          ))
+                    ],
                   ),
                 ),
               );
