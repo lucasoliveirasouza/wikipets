@@ -37,7 +37,9 @@ class CatModel {
   int? vocalisation;
   Weight? weight;
   String? wikipediaUrl;
-  String star = "assets/images/starB.png";
+  String
+
+  star = "assets/images/starB.png";
   bool starValue = false;
 
   CatModel(

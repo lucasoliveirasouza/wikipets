@@ -19,6 +19,25 @@ class _DogViewState extends State<DogView> {
       appBar: AppBar(
         title: Text(widget.dog.name ?? ""),
         backgroundColor: color2,
+        actions: [
+          TextButton(
+            onPressed: () {
+              setState(() {
+                if (widget.dog.starValue) {
+                  widget.dog.star = "assets/images/starA.png";
+                  widget.dog.starValue = false;
+                } else {
+                  widget.dog.star = "assets/images/starB.png";
+                  widget.dog.starValue = true;
+                }
+              });
+            },
+            child: Container(
+              height: 30,
+              child: img.Image.asset(widget.dog.star),
+            ),
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(left: 15, right: 15, top: 10),
