@@ -15,6 +15,7 @@ class CatListView extends StatefulWidget {
 }
 
 class _CatListViewState extends State<CatListView> {
+  var star = "assets/images/starA.png";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,39 +29,68 @@ class _CatListViewState extends State<CatListView> {
             itemCount: repositorio.cats.length,
             itemBuilder: (BuildContext contexto, int cat) {
               final List<CatModel> lista = repositorio.cats;
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CatView(cat: lista[cat])));
-                },
-                child: Container(
-                  padding: EdgeInsets.only(),
-                  child: Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: [
-                        SizedBox(
+              return Container(
+                padding: EdgeInsets.only(),
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CatView(
+                                        cat: lista[cat],
+                                      )));
+                        },
+                        child: SizedBox(
                           child: img.Image.network(lista[cat].image?.url ??
                               "https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino.jpg"),
                         ),
-                        Container(
+                      ),
+                      Container(
                           height: 35,
                           color: color2,
-                          child: Center(
-                            child: Text(
-                              lista[cat].name ?? "",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
                               ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                              Text(
+                                lista[cat].name ?? "",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    if (lista[cat].starValue) {
+                                      lista[cat].star =
+                                          "assets/images/starA.png";
+                                      lista[cat].starValue = false;
+                                    } else {
+                                      lista[cat].star =
+                                          "assets/images/starB.png";
+                                      lista[cat].starValue = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  height: 25,
+                                  child: img.Image.asset(lista[cat].star),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                            ],
+                          ))
+                    ],
                   ),
                 ),
               );
