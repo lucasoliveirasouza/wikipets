@@ -1,5 +1,5 @@
 # wikipets
-
+---
 #### Contatos:
 
 <div>
@@ -17,6 +17,18 @@ Um aplicativo para informações sobre pets (cachorros e gatos). Ele utiliza o g
 Também faz uso de duas APIs rest para busca de dados desses pets:
 * https://docs.thedogapi.com/
 * https://docs.thecatapi.com/
+
+#### Requisitos:
+* Listar cães e gatos;
+* Mostrar detalhes de cada aniais;
+* Disponibilizar opção de favoritar cada pet;
+* Mostrar lista de favoritos;
+* Criar fórum de dúvidas;
+* Opção de cadastro de novas dúvidas;
+* Opção de responder outras dúvidas;
+
+
+---
 
 #### O aplicativo desenvolvido até o momento:
 ![IMG_20220513_144126](https://user-images.githubusercontent.com/26170686/168338708-e16f06cd-2600-4bb4-9a17-e8df4aa0c850.png)
