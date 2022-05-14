@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/views/forum/forum_add.dart';
 
 class ForumView extends StatefulWidget {
   const ForumView({Key? key}) : super(key: key);
@@ -15,6 +17,14 @@ class _ForumViewState extends State<ForumView> {
       appBar: AppBar(
         title: Text("Forum"),
         backgroundColor: color2,
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: color2,
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ForumAdd()));
+        },
+        child: Icon(Icons.add,),
       ),
     );
   }
