@@ -1,5 +1,5 @@
 # wikipets
----
+
 #### Contatos:
 
 <div>
@@ -20,7 +20,7 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 
 #### Requisitos:
 * Listar cães e gatos;
-* Mostrar detalhes de cada aniais;
+* Mostrar detalhes de cada pet;
 * Disponibilizar opção de favoritar cada pet;
 * Mostrar lista de favoritos;
 * Criar fórum de dúvidas;
