@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wikipets/componentes/grid_card.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/views/cat/cat_list.dart';
 import 'package:wikipets/views/dog/dog_list.dart';
 import 'package:wikipets/views/favorites/favorite.dart';
@@ -20,6 +21,12 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: Text("Pets"),
         backgroundColor: color2,
+        actions: [
+          IconButton(
+            onPressed: () {AuthService().logout();},
+            icon: Icon(Icons.exit_to_app),
+          ),
+        ],
       ),
       body: Container(
         child: GridView.count(
