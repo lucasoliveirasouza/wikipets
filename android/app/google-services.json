@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "207086939648",
+    "project_id": "wikipets-b475a",
+    "storage_bucket": "wikipets-b475a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207086939648:android:291e8825123bee652b72e5",
+        "android_client_info": {
+          "package_name": "com.example.wikipets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207086939648-fndns88uiae4cap8430jj2sivmi6vm97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgDikrPOBuhqTFM2EoFrDo8GdErfl_zJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207086939648-fndns88uiae4cap8430jj2sivmi6vm97.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207086939648-9s1m4vnk538a058fdrmmf72i1i7f1oav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wikipets"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
