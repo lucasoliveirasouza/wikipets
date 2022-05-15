@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wikipets/firebase_options.dart';
 import 'package:wikipets/service/cat_service.dart';
 import 'package:wikipets/service/dog_service.dart';
+import 'package:wikipets/views/auth/login.dart';
 import 'package:wikipets/views/home/home.dart';
 
 void main() async{
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const HomeView(),
+      home: const LoginView(),
     );
   }
 }
