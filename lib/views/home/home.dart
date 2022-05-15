@@ -23,7 +23,11 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: color2,
         actions: [
           IconButton(
-            onPressed: () {AuthService().logout();},
+            onPressed: () {
+
+              AuthService().logout();
+
+              },
             icon: Icon(Icons.exit_to_app),
           ),
         ],
