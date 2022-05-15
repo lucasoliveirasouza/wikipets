@@ -13,10 +13,19 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 180, right: 40, left: 40),
+        padding: EdgeInsets.only(top: 120, right: 40, left: 40),
         child: ListView(
           children: [
-
+            Center(
+              child: SizedBox(
+                width: 120,
+                height: 120,
+                child: Image.asset("assets/images/dog.png"),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Center(
               child: Text(
                 "Register",
