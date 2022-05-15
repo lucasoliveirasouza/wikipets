@@ -1,35 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:wikipets/constantes.dart';
-import 'package:wikipets/views/auth/register.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _RegisterViewState createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 120, right: 40, left: 40),
+        padding: EdgeInsets.only(top: 180, right: 40, left: 40),
         child: ListView(
           children: [
-            Center(
-              child: SizedBox(
-                width: 120,
-                height: 120,
-                child: Image.asset("assets/images/cat.png"),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
+
             Center(
               child: Text(
-                "Wikipets",
+                "Register",
                 style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: color3),
               ),
             ),
@@ -76,7 +66,7 @@ class _LoginViewState extends State<LoginView> {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text("Login"),
+                child: Text("Register"),
               ),
             ),
             SizedBox(
@@ -84,9 +74,9 @@ class _LoginViewState extends State<LoginView> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterView()));
+                Navigator.of(context).pop();
               },
-              child: Text("Register now"),
+              child: Text("Login"),
             ),
           ],
         ),
