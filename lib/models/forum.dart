@@ -8,6 +8,15 @@ class Forum{
 
   Forum(this._user, this._subject, this._description);
 
+  addComment(Comment comment){
+    _comments.add(comment);
+  }
+
+  List<Comment> comments(){
+    return _comments;
+}
+
+
   String get description => _description;
 
   set description(String value) {
