@@ -16,7 +16,7 @@ class _ForumAddState extends State<ForumAdd> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color2,
-        title: Text("Register question"),
+        title: Text("Register  question"),
       ),
       body: Container(
         padding: EdgeInsets.only(top: 15,left: 20,right: 20),
