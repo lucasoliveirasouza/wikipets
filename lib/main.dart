@@ -2,10 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/firebase_options.dart';
+import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/service/cat_service.dart';
 import 'package:wikipets/service/dog_service.dart';
-import 'package:wikipets/views/auth/login.dart';
-import 'package:wikipets/views/home/home.dart';
+import 'package:wikipets/views/auth/auth_check.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() async{
     providers: [
       ChangeNotifierProvider(create: (context) => CatService()),
       ChangeNotifierProvider(create: (context) => DogService()),
+      ChangeNotifierProvider(create: (context) => AuthService()),
     ],
     child: MyApp(),
   ));
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const LoginView(),
+      home: const AuthCheck(),
     );
   }
 }

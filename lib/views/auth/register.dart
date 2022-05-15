@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/service/auth_service.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -9,6 +11,8 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  final email = TextEditingController();
+  final senha = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +40,7 @@ class _RegisterViewState extends State<RegisterView> {
               height: 20,
             ),
             TextFormField(
+              controller: email,
               decoration: InputDecoration(
                 labelText: "Email",
                 border: OutlineInputBorder(
@@ -54,6 +59,7 @@ class _RegisterViewState extends State<RegisterView> {
               height: 25,
             ),
             TextFormField(
+              controller: senha,
               decoration: InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(
@@ -74,7 +80,10 @@ class _RegisterViewState extends State<RegisterView> {
             Container(
               height: 55,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  registrar();
+                  Navigator.of(context).pop();
+                },
                 child: Text("Register"),
               ),
             ),
@@ -91,5 +100,13 @@ class _RegisterViewState extends State<RegisterView> {
         ),
       ),
     );
+  }
+  registrar() async {
+    try {
+      await context.read<AuthService>().registrar(email.text, senha.text);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/views/auth/register.dart';
 
 class LoginView extends StatefulWidget {
@@ -10,6 +12,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final senha = TextEditingController();
+  final email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +41,7 @@ class _LoginViewState extends State<LoginView> {
               height: 20,
             ),
             TextFormField(
+              controller: email,
               decoration: InputDecoration(
                 labelText: "Email",
                 border: OutlineInputBorder(
@@ -55,6 +60,7 @@ class _LoginViewState extends State<LoginView> {
               height: 25,
             ),
             TextFormField(
+              controller: senha,
               decoration: InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(
@@ -75,7 +81,9 @@ class _LoginViewState extends State<LoginView> {
             Container(
               height: 55,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  login();
+                },
                 child: Text("Login"),
               ),
             ),
@@ -92,5 +100,13 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
+  }
+  login() async {
+    try {
+      await context.read<AuthService>().login(email.text, senha.text);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 }
