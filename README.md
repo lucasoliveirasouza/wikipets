@@ -19,6 +19,8 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 * https://docs.thecatapi.com/
 
 #### Requisitos:
+* Usuário realizar login;
+* Usuário realizar cadastro;
 * Listar cães e gatos;
 * Mostrar detalhes de cada pet;
 * Disponibilizar opção de favoritar cada pet;
