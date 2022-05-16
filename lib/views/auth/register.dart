@@ -33,7 +33,8 @@ class _RegisterViewState extends State<RegisterView> {
             Center(
               child: Text(
                 "Register",
-                style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: color3),
+                style: TextStyle(
+                    fontSize: 25, fontWeight: FontWeight.bold, color: color3),
               ),
             ),
             SizedBox(
@@ -59,6 +60,8 @@ class _RegisterViewState extends State<RegisterView> {
               height: 25,
             ),
             TextFormField(
+              keyboardType: TextInputType.text,
+              obscureText: true,
               controller: senha,
               decoration: InputDecoration(
                 labelText: "Password",
@@ -101,6 +104,7 @@ class _RegisterViewState extends State<RegisterView> {
       ),
     );
   }
+
   registrar() async {
     try {
       await context.read<AuthService>().registrar(email.text, senha.text);

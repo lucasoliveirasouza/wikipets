@@ -34,7 +34,8 @@ class _LoginViewState extends State<LoginView> {
             Center(
               child: Text(
                 "Wikipets",
-                style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: color3),
+                style: TextStyle(
+                    fontSize: 25, fontWeight: FontWeight.bold, color: color3),
               ),
             ),
             SizedBox(
@@ -60,6 +61,8 @@ class _LoginViewState extends State<LoginView> {
               height: 25,
             ),
             TextFormField(
+              keyboardType: TextInputType.text,
+              obscureText: true,
               controller: senha,
               decoration: InputDecoration(
                 labelText: "Password",
@@ -92,7 +95,8 @@ class _LoginViewState extends State<LoginView> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterView()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterView()));
               },
               child: Text("Register now"),
             ),
@@ -101,6 +105,7 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+
   login() async {
     try {
       await context.read<AuthService>().login(email.text, senha.text);
