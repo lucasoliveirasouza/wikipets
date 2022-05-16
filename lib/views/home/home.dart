@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wikipets/componentes/grid_card.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/service/auth_service.dart';
@@ -24,10 +25,25 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           IconButton(
             onPressed: () {
-
-              AuthService().logout();
-
-              },
+              Get.defaultDialog(
+                  title: "Logout?",
+                  titleStyle: TextStyle(color: color3),
+                  middleTextStyle: TextStyle(color: Colors.white),
+                  onConfirm: () {
+                    AuthService().logout();
+                    Get.close(0);
+                  },
+                  textConfirm: "Confirm",
+                  textCancel: "Cancel",
+                  cancelTextColor: color3,
+                  confirmTextColor: Colors.white,
+                  buttonColor: color3,
+                  radius: 5,
+                  content: Column(
+                    children: [],
+                  ));
+              //
+            },
             icon: Icon(Icons.exit_to_app),
           ),
         ],

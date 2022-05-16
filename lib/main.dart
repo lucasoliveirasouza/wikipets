@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/firebase_options.dart';
 import 'package:wikipets/service/auth_service.dart';
@@ -7,8 +8,7 @@ import 'package:wikipets/service/cat_service.dart';
 import 'package:wikipets/service/dog_service.dart';
 import 'package:wikipets/views/auth/auth_check.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Wiki Pets',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
