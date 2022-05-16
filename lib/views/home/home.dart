@@ -61,8 +61,7 @@ class _HomeViewState extends State<HomeView> {
                 title: "Cats",
                 color: color1,
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CatListView()));
+                  Get.to(() => CatListView());
                 },
               ),
               CardItem(
@@ -70,8 +69,7 @@ class _HomeViewState extends State<HomeView> {
                 title: "Dogs",
                 color: color1,
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DogListView()));
+                  Get.to(() => DogListView());
                 },
               ),
               CardItem(
@@ -79,8 +77,7 @@ class _HomeViewState extends State<HomeView> {
                 title: "Favorites",
                 color: color1,
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FavoriteView()));
+                  Get.to(() => FavoriteView());
                 },
               ),
               CardItem(
@@ -88,8 +85,7 @@ class _HomeViewState extends State<HomeView> {
                 title: "Forum",
                 color: color1,
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ForumView()));
+                  Get.to(() => ForumView());
                 },
               ),
             ]),

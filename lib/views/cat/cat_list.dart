@@ -37,12 +37,9 @@ class _CatListViewState extends State<CatListView> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CatView(
-                                        cat: lista[cat],
-                                      )));
+                          Get.to(() => CatView(
+                                cat: lista[cat],
+                              ));
                         },
                         child: SizedBox(
                           child: img.Image.network(lista[cat].image?.url ??

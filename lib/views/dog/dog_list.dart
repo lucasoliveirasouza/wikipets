@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/dog_model.dart';
@@ -35,12 +36,9 @@ class _DogListViewState extends State<DogListView> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DogView(
-                                        dog: lista[dog],
-                                      )));
+                          Get.to(() => DogView(
+                                dog: lista[dog],
+                              ));
                         },
                         child: SizedBox(
                           child: img.Image.network(lista[dog].image?.url ??

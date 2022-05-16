@@ -18,13 +18,14 @@ class _ForumViewState extends State<ForumView> {
         title: Text("Forum"),
         backgroundColor: color2,
       ),
-
       floatingActionButton: FloatingActionButton(
         backgroundColor: color2,
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ForumAdd()));
+        onPressed: () {
+          Get.to(() => ForumAdd());
         },
-        child: Icon(Icons.add,),
+        child: Icon(
+          Icons.add,
+        ),
       ),
     );
   }
