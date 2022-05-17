@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/service/forum_service.dart';
 
 class ForumAdd extends StatefulWidget {
   const ForumAdd({Key? key}) : super(key: key);
@@ -16,17 +18,17 @@ class _ForumAddState extends State<ForumAdd> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color2,
-        title: Text("Register  question"),
+        title: Text("Register question"),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 15,left: 20,right: 20),
+        padding: EdgeInsets.only(top: 15, left: 20, right: 20),
         child: ListView(
           children: [
             TextFormField(
+              controller: subject,
               decoration: InputDecoration(
                 label: Text("Subject"),
                 border: OutlineInputBorder(
-
                   borderRadius: BorderRadius.all(
                     new Radius.circular(10.0),
                   ),
@@ -41,13 +43,12 @@ class _ForumAddState extends State<ForumAdd> {
             SizedBox(
               height: 15,
             ),
-
             TextFormField(
+              controller: description,
               maxLines: 4,
               decoration: InputDecoration(
                 label: Text("Description"),
                 border: OutlineInputBorder(
-
                   borderRadius: BorderRadius.all(
                     new Radius.circular(10.0),
                   ),
@@ -63,14 +64,22 @@ class _ForumAddState extends State<ForumAdd> {
               height: 15,
             ),
             Container(
-              padding: EdgeInsets.only(right: 40, left: 40),
               height: 50,
               child: ElevatedButton(
-                onPressed: (){},
+                onPressed: () {
+                  Get.snackbar(
+                    "Cadastro de forum",
+                    ForumService()
+                        .cadastrarForum(subject.text, description.text, 'TESTE')
+                        .toString(),
+                    backgroundColor: color1,
+                    snackPosition: SnackPosition.BOTTOM,
+                  );
+                  Navigator.of(context).pop();
+                },
                 child: Text("Save"),
               ),
             ),
-
           ],
         ),
       ),
