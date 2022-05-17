@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wikipets/constantes.dart';
@@ -13,6 +14,8 @@ class ForumAdd extends StatefulWidget {
 class _ForumAddState extends State<ForumAdd> {
   final subject = TextEditingController();
   final description = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +73,8 @@ class _ForumAddState extends State<ForumAdd> {
                   Get.snackbar(
                     "Cadastro de forum",
                     ForumService()
-                        .cadastrarForum(subject.text, description.text, 'TESTE')
+                        .cadastrarForum(subject.text, description.text,
+                            auth.currentUser!.email.toString())
                         .toString(),
                     backgroundColor: color1,
                     snackPosition: SnackPosition.BOTTOM,
