@@ -33,4 +33,5 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 ---
 
 #### O aplicativo desenvolvido até o momento:
-![IMG_20220513_144126](https://user-images.githubusercontent.com/26170686/168338708-e16f06cd-2600-4bb4-9a17-e8df4aa0c850.png)
+
+![IMG_20220517_094647](https://user-images.githubusercontent.com/26170686/168817979-2ff21192-d433-41d8-a10b-91de463b5901.png)
