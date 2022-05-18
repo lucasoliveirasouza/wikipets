@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/models/comment.dart';
 import 'package:wikipets/models/forum.dart';
+import 'package:wikipets/service/comment_service.dart';
 import 'package:wikipets/views/forum/comment_add.dart';
 
 class CommentView extends StatefulWidget {
@@ -13,6 +16,8 @@ class CommentView extends StatefulWidget {
 }
 
 class _CommentViewState extends State<CommentView> {
+  final description = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +37,7 @@ class _CommentViewState extends State<CommentView> {
                   title: Container(
                     height: 55,
                     child: TextFormField(
+                      controller: description,
                       decoration: InputDecoration(
                         hintText: "Comment",
                         border: OutlineInputBorder(
@@ -54,7 +60,20 @@ class _CommentViewState extends State<CommentView> {
                     ),
                     child: IconButton(
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        Comment comment = Comment(
+                            "",
+                            auth.currentUser!.email.toString(),
+                            description.text,
+                            widget.forum.id);
+                        Get.snackbar(
+                          "Cadastro de forum",
+                          CommentService().commentAdd(comment).toString(),
+                          backgroundColor: color1,
+                          snackPosition: SnackPosition.TOP,
+                        );
+                        description.text = "";
+                      },
                       icon: Icon(
                         Icons.send,
                       ),
