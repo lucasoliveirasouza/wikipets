@@ -41,7 +41,7 @@ class _ForumViewState extends State<ForumView> {
                               color: color3,
                               width: 1,
                             ),
-                            borderRadius: BorderRadius.circular(3),
+                            borderRadius: BorderRadius.circular(4),
                           ),
                           child: Column(
                             children: [
