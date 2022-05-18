@@ -26,9 +26,11 @@ class CommentService {
           await FirebaseFirestore.instance.collection('comments').get();
 
       snapshot.docs.forEach((d) {
-        Comment comment =
-            Comment("", d["usuario"], d["descricao"], d["idForum"]);
-        comments.add(comment);
+        if (id == d["idForum"]) {
+          Comment comment =
+              Comment("", d["usuario"], d["descricao"], d["idForum"]);
+          comments.add(comment);
+        }
       });
       print(comments.length);
       return comments;
