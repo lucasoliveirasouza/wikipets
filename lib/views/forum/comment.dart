@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/forum.dart';
+import 'package:wikipets/views/forum/comment_add.dart';
 
 class CommentView extends StatefulWidget {
   Forum forum;
@@ -20,7 +22,11 @@ class _CommentViewState extends State<CommentView> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.send),
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => CommentAddView(
+                forum: widget.forum,
+              ));
+        },
         backgroundColor: color2,
       ),
     );
