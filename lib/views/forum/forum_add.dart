@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/forum_service.dart';
 
 class ForumAdd extends StatefulWidget {
