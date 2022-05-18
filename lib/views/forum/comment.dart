@@ -94,15 +94,8 @@ class _CommentViewState extends State<CommentView> {
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                          ),
-                                          Divider(
-                                            color: color3,
-                                          ),
-                                          ListTile(
-                                            title: Text(
-                                              snapshot
-                                                  .data![index]!.description,
-                                            ),
+                                            subtitle: Text(snapshot
+                                                .data![index]!.description),
                                           ),
                                         ],
                                       ),
@@ -175,15 +168,6 @@ class _CommentViewState extends State<CommentView> {
           ],
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.send),
-        onPressed: () {
-          Get.to(() => CommentAddView(
-                forum: widget.forum,
-              ));
-        },
-        backgroundColor: color2,
-      ),*/
     );
   }
 }
