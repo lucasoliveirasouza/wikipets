@@ -17,6 +17,12 @@ class Forum {
     return _comments;
   }
 
+  String get id => _id;
+
+  set id(String value) {
+    _id = value;
+  }
+
   String get description => _description;
 
   set description(String value) {

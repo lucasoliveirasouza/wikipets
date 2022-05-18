@@ -21,8 +21,8 @@ class CommentService {
     List<Comment> comments = [];
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
-          .collection('comentario')
-          .orderBy("hora")
+          .collection('comments')
+          .orderBy("descricao")
           .get();
       snapshot.docs.forEach((d) {
         if (id == d["idForum"]) {
