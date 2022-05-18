@@ -82,7 +82,10 @@ class _ForumAddState extends State<ForumAdd> {
                   );
                   Navigator.of(context).pop();
                 },
-                child: Text("Save"),
+                child: Text(
+                  "Save",
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
           ],

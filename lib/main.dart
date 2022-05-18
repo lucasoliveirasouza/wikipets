@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:wikipets/constantes.dart';
 import 'package:wikipets/firebase_options.dart';
 import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/service/cat_service.dart';
@@ -36,6 +37,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: TextButton.styleFrom(
+            backgroundColor: color2,
+          ),
+        ),
       ),
       home: const AuthCheck(),
     );
