@@ -28,6 +28,35 @@ class _CommentViewState extends State<CommentView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Container(
+              padding: EdgeInsets.only(
+                top: 15,
+                right: 15,
+                left: 15,
+                bottom: 10,
+              ),
+              child: Container(
+                padding: EdgeInsets.only(top: 5, right: 5, left: 5, bottom: 5),
+                decoration: BoxDecoration(
+                  color: color1,
+                  border: Border.all(
+                    color: color3,
+                    style: BorderStyle.solid,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: Center(
+                  child: Text(
+                    widget.forum.description,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: color3,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(bottom: 5),
