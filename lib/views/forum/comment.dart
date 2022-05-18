@@ -60,7 +60,7 @@ class _CommentViewState extends State<CommentView> {
             ),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 0),
+                padding: const EdgeInsets.all(0),
                 child: Container(
                   padding: EdgeInsets.only(right: 20, left: 20),
                   child: FutureBuilder(
