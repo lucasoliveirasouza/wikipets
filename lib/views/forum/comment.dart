@@ -18,6 +18,11 @@ class _CommentViewState extends State<CommentView> {
         title: Text("Comments"),
         backgroundColor: color2,
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.send),
+        onPressed: () {},
+        backgroundColor: color2,
+      ),
     );
   }
 }
