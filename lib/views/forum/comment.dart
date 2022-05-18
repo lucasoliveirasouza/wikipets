@@ -30,9 +30,9 @@ class _CommentViewState extends State<CommentView> {
           children: [
             Container(
               padding: EdgeInsets.only(
-                top: 15,
-                right: 15,
-                left: 15,
+                top: 10,
+                right: 10,
+                left: 10,
                 bottom: 10,
               ),
               child: Container(
@@ -97,7 +97,7 @@ class _CommentViewState extends State<CommentView> {
                         Get.snackbar(
                           "Cadastro de forum",
                           CommentService().commentAdd(comment).toString(),
-                          backgroundColor: color1,
+                          backgroundColor: Colors.white,
                           snackPosition: SnackPosition.TOP,
                         );
                         description.text = "";
