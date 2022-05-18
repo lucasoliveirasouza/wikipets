@@ -26,15 +26,18 @@ class _CommentViewState extends State<CommentView> {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(bottom: 15),
+                padding: EdgeInsets.only(bottom: 5),
                 alignment: Alignment.bottomCenter,
                 child: ListTile(
-                  title: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Comment",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          new Radius.circular(30.0),
+                  title: Container(
+                    height: 55,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Comment",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            new Radius.circular(30.0),
+                          ),
                         ),
                       ),
                     ),
