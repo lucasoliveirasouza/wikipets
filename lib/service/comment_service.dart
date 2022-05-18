@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:wikipets/models/comment.dart';
 
 class CommentService {
@@ -19,22 +20,22 @@ class CommentService {
 
   Future<List<Comment?>?> getAll(id) async {
     List<Comment> comments = [];
+
     try {
-      QuerySnapshot snapshot = await FirebaseFirestore.instance
-          .collection('comments')
-          .orderBy("descricao")
-          .get();
+      QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection('comments').get();
+
       snapshot.docs.forEach((d) {
-        if (id == d["idForum"]) {
-          Comment comment =
-              Comment(d["id"], d["descricao"], d["usuario"], d["idForum"]);
-          comments.add(comment);
-        }
+        Comment comment =
+            Comment("", d["usuario"], d["descricao"], d["idForum"]);
+        comments.add(comment);
       });
+      print(comments.length);
       return comments;
     } on FirebaseException catch (e) {
       print(e.toString());
     }
+
     return comments;
   }
 }
