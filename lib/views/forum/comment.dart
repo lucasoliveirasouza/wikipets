@@ -5,7 +5,6 @@ import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/comment.dart';
 import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/comment_service.dart';
-import 'package:wikipets/views/forum/comment_add.dart';
 
 class CommentView extends StatefulWidget {
   Forum forum;
