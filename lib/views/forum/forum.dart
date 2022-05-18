@@ -3,6 +3,7 @@ import 'package:get/route_manager.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/forum_service.dart';
+import 'package:wikipets/views/forum/comment.dart';
 import 'package:wikipets/views/forum/forum_add.dart';
 
 class ForumView extends StatefulWidget {
@@ -33,45 +34,50 @@ class _ForumViewState extends State<ForumView> {
                 itemBuilder: ((context, index) {
                   return Column(
                     children: [
-                      Container(
-                        child: Card(
-                          color: color1,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: color3,
-                              width: 1,
+                      GestureDetector(
+                        child: Container(
+                          child: Card(
+                            color: color1,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                color: color3,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(4),
                             ),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  snapshot.data![index]!.user,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    snapshot.data![index]!.user,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  leading: Icon(
+                                    Icons.account_circle,
+                                    size: 50,
+                                    color: color3,
                                   ),
                                 ),
-                                leading: Icon(
-                                  Icons.account_circle,
-                                  size: 50,
+                                Divider(
                                   color: color3,
                                 ),
-                                onTap: () {},
-                              ),
-                              Divider(
-                                color: color3,
-                              ),
-                              ListTile(
-                                title: Text(
-                                  snapshot.data![index]!.description,
+                                ListTile(
+                                  title: Text(
+                                    snapshot.data![index]!.description,
+                                  ),
                                 ),
-                                onTap: () {},
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          Get.to(() => CommentView(
+                                forum: snapshot.data![index]!,
+                              ));
+                        },
                       ),
                       SizedBox(
                         height: 10,
