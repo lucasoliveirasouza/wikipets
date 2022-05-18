@@ -20,7 +20,50 @@ class _CommentViewState extends State<CommentView> {
         title: Text("Comments"),
         backgroundColor: color2,
       ),
-      floatingActionButton: FloatingActionButton(
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(bottom: 15),
+                alignment: Alignment.bottomCenter,
+                child: ListTile(
+                  title: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Comment",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          new Radius.circular(30.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  trailing: Container(
+                    decoration: BoxDecoration(
+                      color: color3,
+                      border: Border.all(
+                        color: color3,
+                        style: BorderStyle.solid,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: IconButton(
+                      color: Colors.white,
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.send,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      /*floatingActionButton: FloatingActionButton(
         child: Icon(Icons.send),
         onPressed: () {
           Get.to(() => CommentAddView(
@@ -28,7 +71,7 @@ class _CommentViewState extends State<CommentView> {
               ));
         },
         backgroundColor: color2,
-      ),
+      ),*/
     );
   }
 }
