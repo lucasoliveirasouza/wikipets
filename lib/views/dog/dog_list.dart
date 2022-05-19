@@ -54,7 +54,7 @@ class _DogListViewState extends State<DogListView> {
                                 width: 10,
                               ),
                               Text(
-                                lista[dog].name ?? "",
+                                lista[dog].name ?? " ",
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
