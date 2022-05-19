@@ -32,7 +32,7 @@ class _CatViewState extends State<CatView> {
                   if (!widget.cat.starValue) {
                     widget.cat.star = "assets/images/starA.png";
                     widget.cat.starValue = true;
-                  } else if(widget.cat.starValue) {
+                  } else if (widget.cat.starValue) {
                     widget.cat.star = "assets/images/starB.png";
                     widget.cat.starValue = false;
                   }
