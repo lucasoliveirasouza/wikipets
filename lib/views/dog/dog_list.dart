@@ -65,14 +65,14 @@ class _DogListViewState extends State<DogListView> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    if (lista[dog].starValue) {
+                                    if (!lista[dog].starValue) {
                                       lista[dog].star =
                                           "assets/images/starA.png";
-                                      lista[dog].starValue = false;
-                                    } else {
+                                      lista[dog].starValue = true;
+                                    } else if (lista[dog].starValue) {
                                       lista[dog].star =
                                           "assets/images/starB.png";
-                                      lista[dog].starValue = true;
+                                      lista[dog].starValue = false;
                                     }
                                   });
                                 },

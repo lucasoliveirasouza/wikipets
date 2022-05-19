@@ -23,12 +23,12 @@ class _DogViewState extends State<DogView> {
           TextButton(
             onPressed: () {
               setState(() {
-                if (widget.dog.starValue) {
+                if (!widget.dog.starValue) {
                   widget.dog.star = "assets/images/starA.png";
-                  widget.dog.starValue = false;
-                } else {
-                  widget.dog.star = "assets/images/starB.png";
                   widget.dog.starValue = true;
+                } else if (widget.dog.starValue) {
+                  widget.dog.star = "assets/images/starB.png";
+                  widget.dog.starValue = false;
                 }
               });
             },
