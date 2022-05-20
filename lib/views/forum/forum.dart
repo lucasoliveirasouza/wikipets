@@ -93,7 +93,7 @@ class _ForumViewState extends State<ForumView> {
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: color2,
+        backgroundColor: color3,
         onPressed: () {
           Get.to(() => ForumAdd());
         },
