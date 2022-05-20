@@ -14,6 +14,8 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   final email = TextEditingController();
   final senha = TextEditingController();
+  final confirmarSenha = TextEditingController();
+  final nome = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -22,7 +24,7 @@ class _RegisterViewState extends State<RegisterView> {
       body: Form(
         key: formKey,
         child: Container(
-          padding: EdgeInsets.only(top: 120, right: 40, left: 40),
+          padding: EdgeInsets.only(top: 60, right: 40, left: 40),
           child: ListView(
             children: [
               Center(
@@ -44,6 +46,31 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               SizedBox(
                 height: 20,
+              ),
+              TextFormField(
+                controller: nome,
+                decoration: InputDecoration(
+                  labelText: "Nome",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      new Radius.circular(10.0),
+                    ),
+                  ),
+                  labelStyle: TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Informe o nome";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: 25,
               ),
               TextFormField(
                 controller: email,
@@ -90,6 +117,33 @@ class _RegisterViewState extends State<RegisterView> {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Informe a senha";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                obscureText: true,
+                controller: confirmarSenha,
+                decoration: InputDecoration(
+                  labelText: "Confirm password",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      new Radius.circular(10.0),
+                    ),
+                  ),
+                  labelStyle: TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Informe a senha novamente";
                   }
                   return null;
                 },
