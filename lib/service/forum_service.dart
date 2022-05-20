@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:wikipets/models/forum.dart';
 
-class ForumService {
+class ForumService extends ChangeNotifier {
   String? cadastrarForum(assunto, descricao, usuario) {
     try {
       CollectionReference forumColecao =
