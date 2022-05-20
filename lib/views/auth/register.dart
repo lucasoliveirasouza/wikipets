@@ -158,7 +158,6 @@ class _RegisterViewState extends State<RegisterView> {
                     if (formKey.currentState!.validate()) {
                       if (senha.text == confirmarSenha.text) {
                         registrar();
-                        Get.back();
                       } else {
                         Get.snackbar(
                           "Erro",
@@ -191,9 +190,14 @@ class _RegisterViewState extends State<RegisterView> {
   registrar() async {
     try {
       await context.read<AuthService>().registrar(email.text, senha.text);
+      Get.back();
     } on AuthException catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.message)));
+      Get.snackbar(
+        "Erro!",
+        e.message,
+        backgroundColor: color1,
+        snackPosition: SnackPosition.TOP,
+      );
     }
   }
 }
