@@ -156,8 +156,17 @@ class _RegisterViewState extends State<RegisterView> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      registrar();
-                      Get.back();
+                      if (senha.text == confirmarSenha.text) {
+                        registrar();
+                        Get.back();
+                      } else {
+                        Get.snackbar(
+                          "Erro",
+                          "Falha ao criar usuário. As senhas são diferentes!",
+                          backgroundColor: color1,
+                          snackPosition: SnackPosition.TOP,
+                        );
+                      }
                     }
                   },
                   child: Text("Register"),
