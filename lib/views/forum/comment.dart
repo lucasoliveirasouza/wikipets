@@ -61,7 +61,7 @@ class _CommentViewState extends State<CommentView> {
             ),
             Divider(),
             Padding(
-              padding: const EdgeInsets.all(0),
+              padding: const EdgeInsets.only(left: 0, right: 0),
               child: Container(
                 padding: EdgeInsets.only(right: 20, left: 20),
                 child: FutureBuilder(
@@ -74,35 +74,39 @@ class _CommentViewState extends State<CommentView> {
                         itemBuilder: ((context, index) {
                           return Column(
                             children: [
-                              GestureDetector(
-                                child: Container(
-                                  child: Card(
-                                    color: color1,
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                        color: color3,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(4),
+                              Container(
+                                child: Card(
+                                  color: Colors.grey.shade200,
+                                  shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                      color: color3,
+                                      width: 1,
                                     ),
-                                    child: Column(
-                                      children: [
-                                        ListTile(
-                                          title: Text(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ListTile(
+                                        title: Container(
+                                          child: Text(
                                             snapshot.data![index]!.user,
                                             style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                color: color3),
                                           ),
-                                          subtitle: Text(snapshot
-                                              .data![index]!.description),
+                                          padding: EdgeInsets.only(bottom: 10),
                                         ),
-                                      ],
-                                    ),
+                                        subtitle: Text(
+                                          snapshot.data![index]!.description,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                onTap: () {},
                               ),
                               SizedBox(
                                 height: 10,
