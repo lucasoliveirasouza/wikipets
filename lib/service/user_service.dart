@@ -16,7 +16,7 @@ class UserService {
     }
   }
 
-  Future<User?> getAll(email) async {
+  Future<User?> getUser(email) async {
     User? user;
 
     try {
