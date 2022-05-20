@@ -47,27 +47,31 @@ class _ForumViewState extends State<ForumView> {
                             ),
                             child: Column(
                               children: [
-                                ListTile(
-                                  title: Text(
-                                    snapshot.data![index]!.user,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                Container(
+                                  child: Center(
+                                    child: Text(
+                                      snapshot.data![index]!.user,
+                                      style: TextStyle(
+                                        color: color3,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                  leading: Icon(
-                                    Icons.account_circle,
-                                    size: 50,
-                                    color: color3,
-                                  ),
+                                  padding: EdgeInsets.only(top: 10, bottom: 5),
                                 ),
                                 Divider(
                                   color: color3,
                                 ),
-                                ListTile(
-                                  title: Text(
-                                    snapshot.data![index]!.description,
+                                Container(
+                                  child: Center(
+                                    child: Text(
+                                      snapshot.data![index]!.description,
+                                      style: TextStyle(fontSize: 15),
+                                    ),
                                   ),
+                                  padding: EdgeInsets.only(
+                                      top: 5, bottom: 10, left: 15, right: 15),
                                 ),
                               ],
                             ),
