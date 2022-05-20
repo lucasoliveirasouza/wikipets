@@ -5,6 +5,7 @@ import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/comment.dart';
 import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/comment_service.dart';
+import 'package:wikipets/service/user_service.dart';
 
 class CommentView extends StatefulWidget {
   Forum forum;
@@ -16,7 +17,22 @@ class CommentView extends StatefulWidget {
 
 class _CommentViewState extends State<CommentView> {
   final description = TextEditingController();
+
   FirebaseAuth auth = FirebaseAuth.instance;
+  String nome = "";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    UserService().getUser(auth.currentUser!.email.toString()).then((value) {
+      setState(() {
+        nome = value?.nome ?? "";
+        print(nome);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<List<Comment?>?> futureList =
@@ -82,7 +98,7 @@ class _CommentViewState extends State<CommentView> {
                                       color: color3,
                                       width: 1,
                                     ),
-                                    borderRadius: BorderRadius.circular(4),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Column(
                                     children: [
@@ -151,10 +167,7 @@ class _CommentViewState extends State<CommentView> {
                       color: Colors.white,
                       onPressed: () {
                         Comment comment = Comment(
-                            "",
-                            auth.currentUser!.email.toString(),
-                            description.text,
-                            widget.forum.id);
+                            "", nome, description.text, widget.forum.id);
                         Get.snackbar(
                           "Cadastro de forum",
                           CommentService().commentAdd(comment).toString(),

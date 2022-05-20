@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/service/forum_service.dart';
+import 'package:wikipets/service/user_service.dart';
 
 class ForumAdd extends StatefulWidget {
   const ForumAdd({Key? key}) : super(key: key);
@@ -14,7 +15,20 @@ class ForumAdd extends StatefulWidget {
 class _ForumAddState extends State<ForumAdd> {
   final subject = TextEditingController();
   final description = TextEditingController();
+  String nome = "";
   FirebaseAuth auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    UserService().getUser(auth.currentUser!.email.toString()).then((value) {
+      setState(() {
+        nome = value?.nome ?? "";
+        print(nome);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +87,7 @@ class _ForumAddState extends State<ForumAdd> {
                   Get.snackbar(
                     "Cadastro de forum",
                     ForumService()
-                        .cadastrarForum(subject.text, description.text,
-                            auth.currentUser!.email.toString())
+                        .cadastrarForum(subject.text, description.text, nome)
                         .toString(),
                     backgroundColor: color1,
                     snackPosition: SnackPosition.BOTTOM,
