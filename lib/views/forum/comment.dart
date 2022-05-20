@@ -37,7 +37,8 @@ class _CommentViewState extends State<CommentView> {
                 bottom: 10,
               ),
               child: Container(
-                padding: EdgeInsets.only(top: 5, right: 5, left: 5, bottom: 5),
+                padding:
+                    EdgeInsets.only(top: 15, right: 15, left: 15, bottom: 15),
                 decoration: BoxDecoration(
                   color: color1,
                   border: Border.all(
@@ -58,6 +59,7 @@ class _CommentViewState extends State<CommentView> {
                 ),
               ),
             ),
+            Divider(),
             Padding(
               padding: const EdgeInsets.all(0),
               child: Container(
