@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/models/user.dart';
 import 'package:wikipets/service/auth_service.dart';
+import 'package:wikipets/service/user_service.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -190,11 +193,20 @@ class _RegisterViewState extends State<RegisterView> {
   registrar() async {
     try {
       await context.read<AuthService>().registrar(email.text, senha.text);
+      User user = User(email.text, senha.text, nome.text);
+      UserService().createUser(user);
       Get.back();
     } on AuthException catch (e) {
       Get.snackbar(
         "Erro!",
         e.message,
+        backgroundColor: color1,
+        snackPosition: SnackPosition.TOP,
+      );
+    } on FirebaseException catch (e) {
+      Get.snackbar(
+        "Erro!",
+        e.message.toString(),
         backgroundColor: color1,
         snackPosition: SnackPosition.TOP,
       );
