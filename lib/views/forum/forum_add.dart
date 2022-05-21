@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/forum_service.dart';
 import 'package:wikipets/service/user_service.dart';
 
@@ -84,13 +86,11 @@ class _ForumAddState extends State<ForumAdd> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
+                  Forum forum = Forum("", nome, subject.text, description.text);
                   Get.snackbar(
                     "Cadastro de forum",
-                    ForumService()
-                        .cadastrarForum(subject.text, description.text, nome)
-                        .toString(),
-                    backgroundColor: color1,
-                    snackPosition: SnackPosition.BOTTOM,
+                      Provider.of<ForumService>(context, listen: false).cadastrarForum(forum).toString(),
+                    snackPosition: SnackPosition.TOP,
                   );
                   Navigator.of(context).pop();
                 },
