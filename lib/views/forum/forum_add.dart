@@ -27,7 +27,6 @@ class _ForumAddState extends State<ForumAdd> {
     UserService().getUser(auth.currentUser!.email.toString()).then((value) {
       setState(() {
         nome = value?.nome ?? "";
-        print(nome);
       });
     });
   }

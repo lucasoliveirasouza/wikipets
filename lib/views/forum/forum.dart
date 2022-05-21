@@ -83,14 +83,13 @@ class _ForumViewState extends State<ForumView> {
                       },
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     )
                   ],
                 ),
               );
             },
             separatorBuilder: (_, __) => Container(
-              height: 5,
             ),
             padding: EdgeInsets.all(16),
           );
