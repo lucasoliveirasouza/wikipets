@@ -28,7 +28,6 @@ class _CommentViewState extends State<CommentView> {
     UserService().getUser(auth.currentUser!.email.toString()).then((value) {
       setState(() {
         nome = value?.nome ?? "";
-        print(nome);
       });
     });
   }

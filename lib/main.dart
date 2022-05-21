@@ -6,6 +6,7 @@ import 'package:wikipets/constantes.dart';
 import 'package:wikipets/firebase_options.dart';
 import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/service/cat_service.dart';
+import 'package:wikipets/service/comment_service.dart';
 import 'package:wikipets/service/dog_service.dart';
 import 'package:wikipets/service/forum_service.dart';
 import 'package:wikipets/views/auth/auth_check.dart';
@@ -23,6 +24,7 @@ void main() async {
       ChangeNotifierProvider(create: (context) => DogService()),
       ChangeNotifierProvider(create: (context) => AuthService()),
       ChangeNotifierProvider(create: (context) => ForumService()),
+      ChangeNotifierProvider(create: (context) => CommentService()),
     ],
     child: MyApp(),
   ));

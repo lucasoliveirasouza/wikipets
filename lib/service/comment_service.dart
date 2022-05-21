@@ -1,7 +1,35 @@
+import 'dart:collection';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:wikipets/models/comment.dart';
 
-class CommentService {
+class CommentService extends ChangeNotifier{
+  List<Comment> _comments = [];
+
+  UnmodifiableListView<Comment> get comments => UnmodifiableListView(_comments);
+
+  CommentService() {
+    _searchComment();
+  }
+
+  _searchComment() async{
+    try {
+      QuerySnapshot snapshot =
+      await FirebaseFirestore.instance.collection('comments').get();
+
+      snapshot.docs.forEach((d) {
+          Comment comment =
+          Comment("", d["usuario"], d["descricao"], d["idForum"]);
+          _comments.add(comment);
+
+      });
+      notifyListeners();
+    } on FirebaseException catch (e) {
+      print(e.toString());
+    }
+  }
+
   String? commentAdd(Comment comment) {
     try {
       CollectionReference comments =
@@ -31,7 +59,6 @@ class CommentService {
           comments.add(comment);
         }
       });
-      print(comments.length);
       return comments;
     } on FirebaseException catch (e) {
       print(e.toString());

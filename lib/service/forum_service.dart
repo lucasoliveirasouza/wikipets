@@ -15,7 +15,6 @@ class ForumService extends ChangeNotifier {
   }
 
   _buscarForuns() async{
-
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
           .collection('forum')
@@ -50,21 +49,4 @@ class ForumService extends ChangeNotifier {
     }
   }
 
-  Future<List<Forum?>?> getAll() async {
-    List<Forum> foruns = [];
-    try {
-      QuerySnapshot snapshot = await FirebaseFirestore.instance
-          .collection('forum')
-          .orderBy("assunto")
-          .get();
-      snapshot.docs.forEach((d) {
-        Forum forum = Forum(d.id, d["usuario"], d["assunto"], d["descricao"]);
-        foruns.add(forum);
-      });
-      return foruns;
-    } on FirebaseException catch (e) {
-      print(e.toString());
-    }
-    return foruns;
-  }
 }

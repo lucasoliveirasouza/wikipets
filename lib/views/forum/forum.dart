@@ -17,7 +17,7 @@ class ForumView extends StatefulWidget {
 class _ForumViewState extends State<ForumView> {
   @override
   Widget build(BuildContext context) {
-    Future<List<Forum?>?> futureList = ForumService().getAll();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Forum"),
