@@ -176,7 +176,9 @@ class _CommentViewState extends State<CommentView> {
                             "", nome, description.text, widget.forum.id);
                         Get.snackbar(
                           "Cadastro de forum",
-                          CommentService().commentAdd(comment).toString(),
+                          Provider.of<CommentService>(context, listen: false)
+                              .commentAdd(comment)
+                              .toString(),
                           backgroundColor: Colors.white,
                           snackPosition: SnackPosition.TOP,
                         );

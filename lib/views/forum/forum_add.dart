@@ -88,7 +88,9 @@ class _ForumAddState extends State<ForumAdd> {
                   Forum forum = Forum("", nome, subject.text, description.text);
                   Get.snackbar(
                     "Cadastro de forum",
-                      Provider.of<ForumService>(context, listen: false).cadastrarForum(forum).toString(),
+                    Provider.of<ForumService>(context, listen: false)
+                        .cadastrarForum(forum)
+                        .toString(),
                     snackPosition: SnackPosition.TOP,
                   );
                   Navigator.of(context).pop();

@@ -39,6 +39,8 @@ class CommentService extends ChangeNotifier{
         'usuario': comment.user,
         'idForum': comment.idForum,
       });
+      _comments.add(comment);
+      notifyListeners();
       return "Comentário cadastrado!";
     } on FirebaseException catch (e) {
       return e.message;
