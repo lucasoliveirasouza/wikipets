@@ -35,8 +35,6 @@ class _CommentViewState extends State<CommentView> {
 
   @override
   Widget build(BuildContext context) {
-    Future<List<Comment?>?> futureList =
-        CommentService().getAll(widget.forum.id);
     return Scaffold(
       appBar: AppBar(
         title: Text("Comments"),
@@ -85,54 +83,56 @@ class _CommentViewState extends State<CommentView> {
                       itemCount: repositorio.comments.length,
                       itemBuilder: (BuildContext contexto, int comment) {
                         final List<Comment> lista = repositorio.comments;
-                        return Container(
-                          padding: EdgeInsets.only(),
-                          child: Column(
-                            children: [
-                              Container(
-                                child: Card(
-                                  color: Colors.grey.shade200,
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                      color: color3,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      ListTile(
-                                        title: Container(
-                                          child: Text(
-                                            lista[comment].user,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: color3),
-                                          ),
-                                          padding: EdgeInsets.only(bottom: 10),
-                                        ),
-                                        subtitle: Text(
-                                          lista[comment].description,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                          ),
-                                        ),
+                        if(lista[comment].subject == widget.forum.subject){
+                          return Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Card(
+                                    color: Colors.grey.shade200,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        color: color3,
+                                        width: 1,
                                       ),
-                                    ],
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          title: Container(
+                                            child: Text(
+                                              lista[comment].user,
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: color3),
+                                            ),
+                                            padding: EdgeInsets.only(bottom: 10),
+                                          ),
+                                          subtitle: Text(
+                                            lista[comment].description,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
-                          ),
-                        );
+                                SizedBox(
+                                  height: 5,
+                                )
+                              ],
+                            ),
+                          );
+                        }else{
+                          return Container();
+                        }
                       },
                       separatorBuilder: (_, __) => Container(
                       ),
-                      padding: EdgeInsets.all(16),
                     );
                   },
                 ),
@@ -173,7 +173,7 @@ class _CommentViewState extends State<CommentView> {
                       color: Colors.white,
                       onPressed: () {
                         Comment comment = Comment(
-                            "", nome, description.text, widget.forum.id);
+                            "", nome, description.text,widget.forum.subject, widget.forum.id);
                         Get.snackbar(
                           "Cadastro de forum",
                           Provider.of<CommentService>(context, listen: false)

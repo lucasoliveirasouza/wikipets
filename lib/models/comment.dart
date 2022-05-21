@@ -3,8 +3,16 @@ class Comment {
   String _user;
   String _description;
   String _idForum;
+  String _subject;
 
-  Comment(this._id, this._user, this._description, this._idForum);
+  Comment(this._id, this._user, this._description, this._subject, this._idForum);
+
+
+  String get subject => _subject;
+
+  set subject(String value) {
+    _subject = value;
+  }
 
   String get id => _id;
 

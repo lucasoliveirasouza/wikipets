@@ -20,7 +20,7 @@ class CommentService extends ChangeNotifier{
 
       snapshot.docs.forEach((d) {
           Comment comment =
-          Comment("", d["usuario"], d["descricao"], d["idForum"]);
+          Comment("", d["usuario"], d["descricao"],d["assunto"], d["idForum"]);
           _comments.add(comment);
 
       });
@@ -36,6 +36,7 @@ class CommentService extends ChangeNotifier{
           FirebaseFirestore.instance.collection('comments');
       comments.add({
         'descricao': comment.description,
+        'assunto': comment.subject,
         'usuario': comment.user,
         'idForum': comment.idForum,
       });
@@ -47,25 +48,4 @@ class CommentService extends ChangeNotifier{
     }
   }
 
-  Future<List<Comment?>?> getAll(id) async {
-    List<Comment> comments = [];
-
-    try {
-      QuerySnapshot snapshot =
-          await FirebaseFirestore.instance.collection('comments').get();
-
-      snapshot.docs.forEach((d) {
-        if (id == d["idForum"]) {
-          Comment comment =
-              Comment("", d["usuario"], d["descricao"], d["idForum"]);
-          comments.add(comment);
-        }
-      });
-      return comments;
-    } on FirebaseException catch (e) {
-      print(e.toString());
-    }
-
-    return comments;
-  }
 }
