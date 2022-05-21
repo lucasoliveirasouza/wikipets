@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/comment.dart';
 import 'package:wikipets/models/forum.dart';
@@ -75,19 +76,18 @@ class _CommentViewState extends State<CommentView> {
               ),
             ),
             Divider(),
-            Padding(
-              padding: const EdgeInsets.only(left: 0, right: 0),
+            Flexible(
               child: Container(
                 padding: EdgeInsets.only(right: 20, left: 20),
-                child: FutureBuilder(
-                    future: futureList,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<Comment?>?> snapshot) {
-                      return ListView.builder(
-                        itemCount: snapshot.data?.length ?? 0,
-                        shrinkWrap: true,
-                        itemBuilder: ((context, index) {
-                          return Column(
+                child: Consumer<CommentService>(
+                  builder: (context, repositorio, child) {
+                    return ListView.separated(
+                      itemCount: repositorio.comments.length,
+                      itemBuilder: (BuildContext contexto, int comment) {
+                        final List<Comment> lista = repositorio.comments;
+                        return Container(
+                          padding: EdgeInsets.only(),
+                          child: Column(
                             children: [
                               Container(
                                 child: Card(
@@ -104,7 +104,7 @@ class _CommentViewState extends State<CommentView> {
                                       ListTile(
                                         title: Container(
                                           child: Text(
-                                            snapshot.data![index]!.user,
+                                            lista[comment].user,
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class _CommentViewState extends State<CommentView> {
                                           padding: EdgeInsets.only(bottom: 10),
                                         ),
                                         subtitle: Text(
-                                          snapshot.data![index]!.description,
+                                          lista[comment].description,
                                           style: TextStyle(
                                             fontSize: 16,
                                           ),
@@ -127,10 +127,17 @@ class _CommentViewState extends State<CommentView> {
                                 height: 10,
                               )
                             ],
-                          );
-                        }),
-                      );
-                    }),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (_, __) => Container(
+                      ),
+                      padding: EdgeInsets.all(16),
+                    );
+                  },
+                ),
+
+
               ),
             ),
             Expanded(
