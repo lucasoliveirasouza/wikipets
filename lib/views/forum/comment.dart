@@ -10,6 +10,7 @@ import 'package:wikipets/service/user_service.dart';
 
 class CommentView extends StatefulWidget {
   Forum forum;
+
   CommentView({Key? key, required this.forum}) : super(key: key);
 
   @override
@@ -18,9 +19,9 @@ class CommentView extends StatefulWidget {
 
 class _CommentViewState extends State<CommentView> {
   final description = TextEditingController();
-
   FirebaseAuth auth = FirebaseAuth.instance;
   String nome = "";
+
   @override
   void initState() {
     // TODO: implement initState
@@ -83,7 +84,7 @@ class _CommentViewState extends State<CommentView> {
                       itemCount: repositorio.comments.length,
                       itemBuilder: (BuildContext contexto, int comment) {
                         final List<Comment> lista = repositorio.comments;
-                        if(lista[comment].subject == widget.forum.subject){
+                        if (lista[comment].subject == widget.forum.subject) {
                           return Container(
                             child: Column(
                               children: [
@@ -108,7 +109,8 @@ class _CommentViewState extends State<CommentView> {
                                                   fontWeight: FontWeight.bold,
                                                   color: color3),
                                             ),
-                                            padding: EdgeInsets.only(bottom: 10),
+                                            padding:
+                                                EdgeInsets.only(bottom: 10),
                                           ),
                                           subtitle: Text(
                                             lista[comment].description,
@@ -127,17 +129,14 @@ class _CommentViewState extends State<CommentView> {
                               ],
                             ),
                           );
-                        }else{
+                        } else {
                           return Container();
                         }
                       },
-                      separatorBuilder: (_, __) => Container(
-                      ),
+                      separatorBuilder: (_, __) => Container(),
                     );
                   },
                 ),
-
-
               ),
             ),
             Expanded(
@@ -172,8 +171,8 @@ class _CommentViewState extends State<CommentView> {
                     child: IconButton(
                       color: Colors.white,
                       onPressed: () {
-                        Comment comment = Comment(
-                            "", nome, description.text,widget.forum.subject, widget.forum.id);
+                        Comment comment = Comment("", nome, description.text,
+                            widget.forum.subject, widget.forum.id);
                         Get.snackbar(
                           "Cadastro de forum",
                           Provider.of<CommentService>(context, listen: false)
