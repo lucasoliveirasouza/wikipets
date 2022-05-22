@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wikipets/models/comment.dart';
 
-class CommentService extends ChangeNotifier{
+class CommentService extends ChangeNotifier {
   List<Comment> _comments = [];
 
   UnmodifiableListView<Comment> get comments => UnmodifiableListView(_comments);
@@ -13,16 +13,15 @@ class CommentService extends ChangeNotifier{
     _searchComment();
   }
 
-  _searchComment() async{
+  _searchComment() async {
     try {
       QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('comments').get();
+          await FirebaseFirestore.instance.collection('comments').get();
 
       snapshot.docs.forEach((d) {
-          Comment comment =
-          Comment("", d["usuario"], d["descricao"],d["assunto"], d["idForum"]);
-          _comments.add(comment);
-
+        Comment comment = Comment(
+            "", d["usuario"], d["descricao"], d["assunto"], d["idForum"]);
+        _comments.add(comment);
       });
       notifyListeners();
     } on FirebaseException catch (e) {
@@ -47,5 +46,4 @@ class CommentService extends ChangeNotifier{
       return e.message;
     }
   }
-
 }
