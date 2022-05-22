@@ -19,6 +19,7 @@ class CommentView extends StatefulWidget {
 
 class _CommentViewState extends State<CommentView> {
   final description = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
   String name = "";
 
@@ -140,45 +141,60 @@ class _CommentViewState extends State<CommentView> {
               ),
             ),
             Expanded(
-              child: Container(
-                padding: EdgeInsets.only(bottom: 5),
-                alignment: Alignment.bottomCenter,
-                child: ListTile(
-                  title: Container(
-                    height: 55,
-                    child: TextFormField(
-                      controller: description,
-                      decoration: InputDecoration(
-                        hintText: "Comment",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            new Radius.circular(30.0),
+              child: Form(
+                key: formKey,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 5),
+                  alignment: Alignment.bottomCenter,
+                  child: ListTile(
+                    title: Container(
+                      height: 55,
+                      child: TextFormField(
+                        controller: description,
+                        decoration: InputDecoration(
+                          hintText: "Comment",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              new Radius.circular(30.0),
+                            ),
                           ),
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Inform the comment";
+                          }
+                          return null;
+                        },
                       ),
                     ),
-                  ),
-                  trailing: Container(
-                    decoration: BoxDecoration(
-                      color: color3,
-                      border: Border.all(
+                    trailing: Container(
+                      decoration: BoxDecoration(
                         color: color3,
-                        style: BorderStyle.solid,
-                        width: 1.0,
+                        border: Border.all(
+                          color: color3,
+                          style: BorderStyle.solid,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    child: IconButton(
-                      color: Colors.white,
-                      onPressed: () {
-                        Comment comment = Comment("", name, description.text,
-                            widget.forum.subject, widget.forum.id);
-                        Provider.of<CommentService>(context, listen: false)
-                            .commentAdd(comment);
-                        description.text = "";
-                      },
-                      icon: Icon(
-                        Icons.send,
+                      child: IconButton(
+                        color: Colors.white,
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            Comment comment = Comment(
+                                "",
+                                name,
+                                description.text,
+                                widget.forum.subject,
+                                widget.forum.id);
+                            Provider.of<CommentService>(context, listen: false)
+                                .commentAdd(comment);
+                            description.text = "";
+                          }
+                        },
+                        icon: Icon(
+                          Icons.send,
+                        ),
                       ),
                     ),
                   ),
