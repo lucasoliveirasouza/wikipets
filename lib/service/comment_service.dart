@@ -42,7 +42,7 @@ class CommentService extends ChangeNotifier{
       });
       _comments.add(comment);
       notifyListeners();
-      return "Comentário cadastrado!";
+      return "Registered comment!";
     } on FirebaseException catch (e) {
       return e.message;
     }

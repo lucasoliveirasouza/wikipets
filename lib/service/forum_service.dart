@@ -43,7 +43,7 @@ class ForumService extends ChangeNotifier {
       });
       _foruns.add(forum);
       notifyListeners();
-      return "Fórum cadastrado!";
+      return "Registered forum!";
     } on FirebaseException catch (e) {
       return e.message;
     }
