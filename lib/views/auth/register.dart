@@ -67,7 +67,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Informe o nome";
+                    return "Inform the name";
                   }
                   return null;
                 },
@@ -92,7 +92,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Informe o e-mail";
+                    return "Inform the email";
                   }
                   return null;
                 },
@@ -119,7 +119,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Informe a senha";
+                    return "Inform the password";
                   }
                   return null;
                 },
@@ -146,7 +146,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Informe a senha novamente";
+                    return "Inform the password";
                   }
                   return null;
                 },
@@ -163,8 +163,8 @@ class _RegisterViewState extends State<RegisterView> {
                         registrar();
                       } else {
                         Get.snackbar(
-                          "Erro",
-                          "Falha ao criar usuário. As senhas são diferentes!",
+                          "Error",
+                          "Failed to create user. The passwords are different!",
                           backgroundColor: color1,
                           snackPosition: SnackPosition.TOP,
                         );

@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Informe o e-mail";
+                    return "Inform the email";
                   }
                   return null;
                 },
@@ -90,7 +90,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Informe a senha";
+                    return "Inform the password";
                   }
                   return null;
                 },
