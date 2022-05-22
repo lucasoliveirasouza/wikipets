@@ -17,7 +17,7 @@ class ForumAdd extends StatefulWidget {
 class _ForumAddState extends State<ForumAdd> {
   final subject = TextEditingController();
   final description = TextEditingController();
-  String nome = "";
+  String name = "";
   FirebaseAuth auth = FirebaseAuth.instance;
   @override
   void initState() {
@@ -26,7 +26,7 @@ class _ForumAddState extends State<ForumAdd> {
 
     UserService().getUser(auth.currentUser!.email.toString()).then((value) {
       setState(() {
-        nome = value?.nome ?? "";
+        name = value?.nome ?? "";
       });
     });
   }
@@ -85,12 +85,13 @@ class _ForumAddState extends State<ForumAdd> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Forum forum = Forum("", nome, subject.text, description.text);
+                  Forum forum = Forum("", name, subject.text, description.text);
                   Get.snackbar(
                     "Forum registration",
                     Provider.of<ForumService>(context, listen: false)
                         .cadastrarForum(forum)
                         .toString(),
+                    backgroundColor: Colors.white,
                     snackPosition: SnackPosition.TOP,
                   );
                   Navigator.of(context).pop();
