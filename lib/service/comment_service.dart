@@ -16,7 +16,7 @@ class CommentService extends ChangeNotifier {
   _searchComment() async {
     try {
       QuerySnapshot snapshot =
-          await FirebaseFirestore.instance.collection('comments').get();
+          await FirebaseFirestore.instance.collection('comment').get();
 
       snapshot.docs.forEach((d) {
         Comment comment = Comment(
@@ -32,7 +32,7 @@ class CommentService extends ChangeNotifier {
   String? commentAdd(Comment comment) {
     try {
       CollectionReference comments =
-          FirebaseFirestore.instance.collection('comments');
+          FirebaseFirestore.instance.collection('comment');
       comments.add({
         'description': comment.description,
         'subject': comment.subject,
