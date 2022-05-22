@@ -19,6 +19,7 @@ class _ForumAddState extends State<ForumAdd> {
   final description = TextEditingController();
   String name = "";
   FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     // TODO: implement initState
