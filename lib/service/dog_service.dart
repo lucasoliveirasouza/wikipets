@@ -29,4 +29,15 @@ class DogService extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  favoriteDog(DogModel dog){
+    if (!dog.starValue) {
+      dog.star = "assets/images/starA.png";
+      dog.starValue = true;
+    } else if (dog.starValue) {
+      dog.star = "assets/images/starB.png";
+      dog.starValue = false;
+    }
+    notifyListeners();
+  }
 }

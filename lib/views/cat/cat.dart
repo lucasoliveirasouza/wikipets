@@ -30,7 +30,7 @@ class _CatViewState extends State<CatView> {
           actions: [
             TextButton(
               onPressed: () {
-                Provider.of<CatService>(context, listen: false).favorite(widget.cat);
+                Provider.of<CatService>(context, listen: false).favoriteCat(widget.cat);
               },
               child: Container(
                 height: 30,

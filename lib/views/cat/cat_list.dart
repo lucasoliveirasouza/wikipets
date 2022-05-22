@@ -66,7 +66,7 @@ class _CatListViewState extends State<CatListView> {
                               GestureDetector(
                                 onTap: () {
 
-                                  Provider.of<CatService>(context, listen: false).favorite(lista[cat]);
+                                  Provider.of<CatService>(context, listen: false).favoriteCat(lista[cat]);
 
                                 },
                                 child: Container(

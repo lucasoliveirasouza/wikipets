@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/componentes/row_table.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/dog_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
+import 'package:wikipets/service/dog_service.dart';
 
 class DogView extends StatefulWidget {
   DogModel dog;
@@ -22,19 +24,14 @@ class _DogViewState extends State<DogView> {
         actions: [
           TextButton(
             onPressed: () {
-              setState(() {
-                if (!widget.dog.starValue) {
-                  widget.dog.star = "assets/images/starA.png";
-                  widget.dog.starValue = true;
-                } else if (widget.dog.starValue) {
-                  widget.dog.star = "assets/images/starB.png";
-                  widget.dog.starValue = false;
-                }
-              });
+              Provider.of<DogService>(context, listen: false).favoriteDog(widget.dog);
             },
             child: Container(
               height: 30,
-              child: img.Image.asset(widget.dog.star),
+              child: img.Image.asset(
+                  Provider.of<DogService>(context)
+                      .dogs
+                      .firstWhere((t) => t.id == widget.dog.id).star),
             ),
           ),
         ],

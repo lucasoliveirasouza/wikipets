@@ -29,7 +29,7 @@ class CatService extends ChangeNotifier {
     }
   }
 
-  favorite(CatModel cat){
+  favoriteCat(CatModel cat){
     if (!cat.starValue) {
       cat.star = "assets/images/starA.png";
       cat.starValue = true;
