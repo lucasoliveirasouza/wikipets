@@ -65,17 +65,9 @@ class _CatListViewState extends State<CatListView> {
                               Spacer(),
                               GestureDetector(
                                 onTap: () {
-                                  setState(() {
-                                    if (!lista[cat].starValue) {
-                                      lista[cat].star =
-                                          "assets/images/starA.png";
-                                      lista[cat].starValue = true;
-                                    } else if (lista[cat].starValue) {
-                                      lista[cat].star =
-                                          "assets/images/starB.png";
-                                      lista[cat].starValue = false;
-                                    }
-                                  });
+
+                                  Provider.of<CatService>(context, listen: false).favorite(lista[cat]);
+
                                 },
                                 child: Container(
                                   height: 25,

@@ -12,7 +12,6 @@ class CatService extends ChangeNotifier {
   CatService() {
     _buscarCats();
   }
-
   _buscarCats() async {
     String uri = 'https://api.thecatapi.com/v1/breeds';
     final response = await http.get(Uri.parse(uri));
@@ -28,5 +27,16 @@ class CatService extends ChangeNotifier {
       });
       notifyListeners();
     }
+  }
+
+  favorite(CatModel cat){
+    if (!cat.starValue) {
+      cat.star = "assets/images/starA.png";
+      cat.starValue = true;
+    } else if (cat.starValue) {
+      cat.star = "assets/images/starB.png";
+      cat.starValue = false;
+    }
+    notifyListeners();
   }
 }

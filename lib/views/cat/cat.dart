@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wikipets/componentes/rating_card.dart';
 import 'package:wikipets/componentes/row_table.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/cat_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
+import 'package:wikipets/service/cat_service.dart';
 
 class CatView extends StatefulWidget {
   CatModel cat;
@@ -28,19 +30,14 @@ class _CatViewState extends State<CatView> {
           actions: [
             TextButton(
               onPressed: () {
-                setState(() {
-                  if (!widget.cat.starValue) {
-                    widget.cat.star = "assets/images/starA.png";
-                    widget.cat.starValue = true;
-                  } else if (widget.cat.starValue) {
-                    widget.cat.star = "assets/images/starB.png";
-                    widget.cat.starValue = false;
-                  }
-                });
+                Provider.of<CatService>(context, listen: false).favorite(widget.cat);
               },
               child: Container(
                 height: 30,
-                child: img.Image.asset(widget.cat.star),
+                child: img.Image.asset(
+                    Provider.of<CatService>(context)
+                        .cats
+                        .firstWhere((t) => t.id == widget.cat.id).star),
               ),
             ),
           ],
