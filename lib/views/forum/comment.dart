@@ -173,14 +173,8 @@ class _CommentViewState extends State<CommentView> {
                       onPressed: () {
                         Comment comment = Comment("", nome, description.text,
                             widget.forum.subject, widget.forum.id);
-                        Get.snackbar(
-                          "Cadastro de forum",
-                          Provider.of<CommentService>(context, listen: false)
-                              .commentAdd(comment)
-                              .toString(),
-                          backgroundColor: Colors.white,
-                          snackPosition: SnackPosition.TOP,
-                        );
+                        Provider.of<CommentService>(context, listen: false)
+                            .commentAdd(comment);
                         description.text = "";
                       },
                       icon: Icon(

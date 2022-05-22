@@ -36,7 +36,7 @@ class _ForumAddState extends State<ForumAdd> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color2,
-        title: Text("Register question"),
+        title: Text("Question"),
       ),
       body: Container(
         padding: EdgeInsets.only(top: 15, left: 20, right: 20),
@@ -87,7 +87,7 @@ class _ForumAddState extends State<ForumAdd> {
                 onPressed: () {
                   Forum forum = Forum("", nome, subject.text, description.text);
                   Get.snackbar(
-                    "Cadastro de forum",
+                    "Forum registration",
                     Provider.of<ForumService>(context, listen: false)
                         .cadastrarForum(forum)
                         .toString(),
