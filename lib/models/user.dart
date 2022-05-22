@@ -1,20 +1,20 @@
 class User {
   String _email;
-  String _senha;
-  String _nome;
+  String _password;
+  String _name;
 
-  User(this._email, this._senha, this._nome);
+  User(this._email, this._password, this._name);
 
-  String get senha => _senha;
+  String get password => _password;
 
-  set senha(String value) {
-    _senha = value;
+  set password(String value) {
+    _password = value;
   }
 
-  String get nome => _nome;
+  String get name => _name;
 
-  set nome(String value) {
-    _nome = value;
+  set name(String value) {
+    _name = value;
   }
 
   String get email => _email;

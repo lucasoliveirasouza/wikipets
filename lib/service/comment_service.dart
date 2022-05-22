@@ -20,7 +20,7 @@ class CommentService extends ChangeNotifier {
 
       snapshot.docs.forEach((d) {
         Comment comment = Comment(
-            "", d["usuario"], d["descricao"], d["assunto"], d["idForum"]);
+            "", d["user"], d["description"], d["subject"], d["idForum"]);
         _comments.add(comment);
       });
       notifyListeners();
@@ -34,9 +34,9 @@ class CommentService extends ChangeNotifier {
       CollectionReference comments =
           FirebaseFirestore.instance.collection('comments');
       comments.add({
-        'descricao': comment.description,
-        'assunto': comment.subject,
-        'usuario': comment.user,
+        'description': comment.description,
+        'subject': comment.subject,
+        'user': comment.user,
         'idForum': comment.idForum,
       });
       _comments.add(comment);

@@ -7,7 +7,7 @@ class UserService {
       CollectionReference users =
           FirebaseFirestore.instance.collection('users');
       users.add({
-        'nome': user.nome,
+        'name': user.name,
         'email': user.email,
       });
       return "E-mail cadastrado!";
@@ -25,7 +25,7 @@ class UserService {
 
       snapshot.docs.forEach((d) {
         if (email == d["email"]) {
-          user = User(d["email"], "", d["nome"]);
+          user = User(d["email"], "", d["name"]);
         }
       });
       return user;

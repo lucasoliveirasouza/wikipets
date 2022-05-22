@@ -20,7 +20,7 @@ class CommentView extends StatefulWidget {
 class _CommentViewState extends State<CommentView> {
   final description = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
-  String nome = "";
+  String name = "";
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _CommentViewState extends State<CommentView> {
 
     UserService().getUser(auth.currentUser!.email.toString()).then((value) {
       setState(() {
-        nome = value?.nome ?? "";
+        name = value?.name ?? "";
       });
     });
   }
@@ -171,7 +171,7 @@ class _CommentViewState extends State<CommentView> {
                     child: IconButton(
                       color: Colors.white,
                       onPressed: () {
-                        Comment comment = Comment("", nome, description.text,
+                        Comment comment = Comment("", name, description.text,
                             widget.forum.subject, widget.forum.id);
                         Provider.of<CommentService>(context, listen: false)
                             .commentAdd(comment);

@@ -18,10 +18,10 @@ class ForumService extends ChangeNotifier {
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
           .collection('forum')
-          .orderBy("assunto")
+          .orderBy("subject")
           .get();
       snapshot.docs.forEach((d) {
-        Forum forum = Forum(d.id, d["usuario"], d["assunto"], d["descricao"]);
+        Forum forum = Forum(d.id, d["user"], d["subject"], d["description"]);
         _foruns.add(forum);
 
       });
@@ -37,9 +37,9 @@ class ForumService extends ChangeNotifier {
       CollectionReference forumColecao =
           FirebaseFirestore.instance.collection('forum');
       forumColecao.add({
-        'assunto': forum.subject,
-        'descricao': forum.description,
-        'usuario': forum.user,
+        'subject': forum.subject,
+        'description': forum.description,
+        'user': forum.user,
       });
       _foruns.add(forum);
       notifyListeners();
