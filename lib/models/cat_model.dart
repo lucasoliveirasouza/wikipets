@@ -168,6 +168,16 @@ class CatModel {
     data['wikipedia_url'] = this.wikipediaUrl;
     return data;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+    };
+  }
+  factory CatModel.fromMap(Map<String, dynamic> json) => new CatModel(
+    name: json["name"],
+    id: json["id"],
+  );
 }
 
 class Image {

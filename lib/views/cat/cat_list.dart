@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/cat_model.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
+import 'package:wikipets/repositories/cat_favorite_repository.dart';
 import 'package:wikipets/service/cat_service.dart';
 import 'package:wikipets/views/cat/cat.dart';
 
@@ -65,7 +66,7 @@ class _CatListViewState extends State<CatListView> {
                               Spacer(),
                               GestureDetector(
                                 onTap: () {
-
+                                  Provider.of<CatFavoriteRepository>(context, listen: false).newCatFavorite(lista[cat]);
                                   Provider.of<CatService>(context, listen: false).favoriteCat(lista[cat]);
 
                                 },

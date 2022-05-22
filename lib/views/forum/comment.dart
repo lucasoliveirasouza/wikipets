@@ -180,7 +180,7 @@ class _CommentViewState extends State<CommentView> {
                       child: IconButton(
                         color: Colors.white,
                         onPressed: () {
-                          if (formKey.currentState!.validate()) {
+                          if (description.text != "") {
                             Comment comment = Comment(
                                 "",
                                 name,
@@ -190,6 +190,8 @@ class _CommentViewState extends State<CommentView> {
                             Provider.of<CommentService>(context, listen: false)
                                 .commentAdd(comment);
                             description.text = "";
+                          }else{
+                            Get.snackbar("Error", "Inform the comment",backgroundColor: Colors.white);
                           }
                         },
                         icon: Icon(

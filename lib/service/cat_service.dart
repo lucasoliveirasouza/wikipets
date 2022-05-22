@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wikipets/models/cat_model.dart';
+import 'package:wikipets/repositories/cat_favorite_repository.dart';
 
 class CatService extends ChangeNotifier {
   List<CatModel> _cats = [];

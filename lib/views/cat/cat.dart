@@ -21,6 +21,7 @@ class CatView extends StatefulWidget {
 class _CatViewState extends State<CatView> {
   @override
   Widget build(BuildContext context) {
+    print(widget.cat.toJson());
     return DefaultTabController(
       length: 2,
       child: Scaffold(

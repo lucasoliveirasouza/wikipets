@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/firebase_options.dart';
+import 'package:wikipets/repositories/cat_favorite_repository.dart';
 import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/service/cat_service.dart';
 import 'package:wikipets/service/comment_service.dart';
@@ -25,6 +26,7 @@ void main() async {
       ChangeNotifierProvider(create: (context) => AuthService()),
       ChangeNotifierProvider(create: (context) => ForumService()),
       ChangeNotifierProvider(create: (context) => CommentService()),
+      ChangeNotifierProvider(create: (context) => CatFavoriteRepository()),
     ],
     child: MyApp(),
   ));
