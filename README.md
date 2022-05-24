@@ -28,7 +28,7 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 * Criar fórum de dúvidas;
 * Opção de cadastro de novas dúvidas;
 * Opção de responder outras dúvidas;
-
+* Buscar cães e gatos;
 
 ---
 
