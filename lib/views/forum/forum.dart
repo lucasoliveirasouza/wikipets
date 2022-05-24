@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/forum_service.dart';
+import 'package:wikipets/service/user_service.dart';
 import 'package:wikipets/views/forum/comment.dart';
 import 'package:wikipets/views/forum/forum_add.dart';
 
@@ -15,9 +17,21 @@ class ForumView extends StatefulWidget {
 }
 
 class _ForumViewState extends State<ForumView> {
+  String name = "";
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    UserService().getUser(auth.currentUser!.email.toString()).then((value) {
+      setState(() {
+        name = value?.name ?? "";
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Forum"),
@@ -47,17 +61,27 @@ class _ForumViewState extends State<ForumView> {
                           child: Column(
                             children: [
                               Container(
-                                child: Center(
-                                  child: Text(
-                                    lista[forum].user,
-                                    style: TextStyle(
-                                      color: color3,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        lista[forum].user,
+                                        style: TextStyle(
+                                          color: color3,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Spacer(),
+                                    verifica(lista[forum]),
+                                  ],
                                 ),
-                                padding: EdgeInsets.only(top: 10, bottom: 5),
+                                height: 40,
+                                padding: EdgeInsets.only(
+                                  left: 15,
+                                  top: 5,
+                                ),
                               ),
                               Divider(
                                 color: color3,
@@ -78,8 +102,8 @@ class _ForumViewState extends State<ForumView> {
                       ),
                       onTap: () {
                         Get.to(() => CommentView(
-                          forum: lista[forum],
-                        ));
+                              forum: lista[forum],
+                            ));
                       },
                     ),
                     SizedBox(
@@ -89,8 +113,7 @@ class _ForumViewState extends State<ForumView> {
                 ),
               );
             },
-            separatorBuilder: (_, __) => Container(
-            ),
+            separatorBuilder: (_, __) => Container(),
             padding: EdgeInsets.all(16),
           );
         },
@@ -105,5 +128,20 @@ class _ForumViewState extends State<ForumView> {
         ),
       ),
     );
+  }
+
+  Widget verifica(Forum forum){
+    if(forum.user == name){
+      return  IconButton(
+        onPressed: () {},
+        icon: Icon(
+          Icons.edit,
+          color: color3,
+          size: 18,
+        ),
+      );
+    }else{
+      return Container();
+    }
   }
 }
