@@ -19,7 +19,7 @@ class _DogsFavoritesViewState extends State<DogsFavoritesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dogs"),
+        title: Text("Dogs favorites"),
         backgroundColor: color2,
       ),
       body: Consumer<DogService>(

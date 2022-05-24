@@ -6,6 +6,7 @@ import 'package:wikipets/models/dog_model.dart';
 import 'package:wikipets/service/dog_service.dart';
 import 'package:flutter/src/widgets/image.dart' as img;
 import 'package:wikipets/views/dog/dog.dart';
+import 'package:wikipets/views/favorites/dogs_favorites.dart';
 
 class DogListView extends StatefulWidget {
   const DogListView({Key? key}) : super(key: key);
@@ -21,6 +22,18 @@ class _DogListViewState extends State<DogListView> {
       appBar: AppBar(
         title: Text("Dogs"),
         backgroundColor: color2,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(() => DogsFavoritesView());
+            },
+            icon: Icon(Icons.star),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
+        ],
       ),
       body: Consumer<DogService>(
         builder: (context, repositorio, child) {
