@@ -13,7 +13,7 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" width="40" height="40"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" height="40"/>
 
 #### O projeto:
-Um aplicativo para informações sobre pets (cachorros e gatos). Ele utiliza o gerenciador de estados Provider. 
+Um aplicativo para informações sobre pets (cães e gatos). Ele utiliza o gerenciador de estados Provider. 
 Também faz uso de duas APIs rest para busca de dados desses pets:
 * https://docs.thedogapi.com/
 * https://docs.thecatapi.com/
