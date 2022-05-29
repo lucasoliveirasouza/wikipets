@@ -83,7 +83,15 @@ class _ForumEditViewState extends State<ForumEditView> {
               ),
               Center(
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.snackbar(
+                      "Forum delete",
+                      Provider.of<ForumService>(context, listen: false)
+                          .removeForum(widget.forum)
+                          .toString(),
+                    );
+                    Navigator.of(context).pop();
+                  },
                   icon: Icon(
                     Icons.delete,
                     size: 45,

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:wikipets/models/forum.dart';
 
 class ForumService extends ChangeNotifier {
-
   List<Forum> _foruns = [];
 
   UnmodifiableListView<Forum> get foruns => UnmodifiableListView(_foruns);
@@ -14,8 +13,7 @@ class ForumService extends ChangeNotifier {
     _buscarForuns();
   }
 
-  _buscarForuns() async{
-
+  _buscarForuns() async {
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
           .collection('forum')
@@ -24,16 +22,12 @@ class ForumService extends ChangeNotifier {
       snapshot.docs.forEach((d) {
         Forum forum = Forum(d.id, d["user"], d["subject"], d["description"]);
         _foruns.add(forum);
-
       });
       notifyListeners();
     } on FirebaseException catch (e) {
       print(e.toString());
     }
   }
-
-
-
 
   String? cadastrarForum(Forum forum) {
     try {
@@ -55,16 +49,14 @@ class ForumService extends ChangeNotifier {
   String? editForum(Forum forum, String description) {
     try {
       var collection = FirebaseFirestore.instance.collection('forum');
-      collection.doc(forum.id).update(
-          {
-            'subject': forum.subject,
-            'description': forum.description,
-            'user': forum.user,
-          }
-      );
+      collection.doc(forum.id).update({
+        'subject': forum.subject,
+        'description': description,
+        'user': forum.user,
+      });
 
       _foruns.forEach((element) {
-        if(element.description == forum.description){
+        if (element.description == forum.description) {
           element.description = description;
           notifyListeners();
         }
@@ -76,4 +68,17 @@ class ForumService extends ChangeNotifier {
     }
   }
 
+  String? removeForum(Forum forum) {
+    try {
+      var collection = FirebaseFirestore.instance.collection('forum');
+      collection.doc(forum.id).delete();
+
+      _foruns
+          .removeWhere((element) => element.id == forum.id);
+      notifyListeners();
+      return "Removed forum!";
+    } on FirebaseException catch (e) {
+      return e.message;
+    }
+  }
 }
