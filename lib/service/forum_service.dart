@@ -53,7 +53,6 @@ class ForumService extends ChangeNotifier {
   }
 
   String? editForum(Forum forum, String description) {
-
     try {
       var collection = FirebaseFirestore.instance.collection('forum');
       collection.doc(forum.id).update(
