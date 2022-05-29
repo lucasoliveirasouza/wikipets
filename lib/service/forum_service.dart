@@ -15,6 +15,7 @@ class ForumService extends ChangeNotifier {
   }
 
   _buscarForuns() async{
+
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
           .collection('forum')
@@ -32,6 +33,8 @@ class ForumService extends ChangeNotifier {
   }
 
 
+
+
   String? cadastrarForum(Forum forum) {
     try {
       CollectionReference forumColecao =
@@ -44,6 +47,31 @@ class ForumService extends ChangeNotifier {
       _foruns.add(forum);
       notifyListeners();
       return "Registered forum!";
+    } on FirebaseException catch (e) {
+      return e.message;
+    }
+  }
+
+  String? editForum(Forum forum, String description) {
+
+    try {
+      var collection = FirebaseFirestore.instance.collection('forum');
+      collection.doc(forum.id).update(
+          {
+            'subject': forum.subject,
+            'description': forum.description,
+            'user': forum.user,
+          }
+      );
+
+      _foruns.forEach((element) {
+        if(element.description == forum.description){
+          element.description = description;
+          notifyListeners();
+        }
+      });
+
+      return "Edited forum!";
     } on FirebaseException catch (e) {
       return e.message;
     }

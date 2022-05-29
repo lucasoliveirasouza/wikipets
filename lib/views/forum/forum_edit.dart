@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/forum.dart';
+import 'package:wikipets/service/forum_service.dart';
 
 class ForumEditView extends StatefulWidget {
   Forum forum;
@@ -62,7 +64,9 @@ class _ForumEditViewState extends State<ForumEditView> {
 
                     Get.snackbar(
                       "Forum registration",
-                      "EDitado",
+                      Provider.of<ForumService>(context, listen: false)
+                          .editForum(widget.forum, description.text)
+                          .toString(),
                     );
                     Navigator.of(context).pop();
                   }
