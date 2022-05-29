@@ -7,14 +7,14 @@ import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/forum_service.dart';
 import 'package:wikipets/service/user_service.dart';
 
-class ForumAdd extends StatefulWidget {
-  const ForumAdd({Key? key}) : super(key: key);
+class ForumAddView extends StatefulWidget {
+  const ForumAddView({Key? key}) : super(key: key);
 
   @override
-  _ForumAddState createState() => _ForumAddState();
+  _ForumAddViewState createState() => _ForumAddViewState();
 }
 
-class _ForumAddState extends State<ForumAdd> {
+class _ForumAddViewState extends State<ForumAddView> {
   final subject = TextEditingController();
   final description = TextEditingController();
   String name = "";

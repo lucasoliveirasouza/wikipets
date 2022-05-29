@@ -8,6 +8,7 @@ import 'package:wikipets/service/forum_service.dart';
 import 'package:wikipets/service/user_service.dart';
 import 'package:wikipets/views/forum/comment.dart';
 import 'package:wikipets/views/forum/forum_add.dart';
+import 'package:wikipets/views/forum/forum_edit.dart';
 
 class ForumView extends StatefulWidget {
   const ForumView({Key? key}) : super(key: key);
@@ -121,7 +122,7 @@ class _ForumViewState extends State<ForumView> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: color3,
         onPressed: () {
-          Get.to(() => ForumAdd());
+          Get.to(() => ForumAddView());
         },
         child: Icon(
           Icons.add,
@@ -133,7 +134,9 @@ class _ForumViewState extends State<ForumView> {
   Widget verifica(Forum forum){
     if(forum.user == name){
       return  IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => ForumEditView(forum: forum));
+        },
         icon: Icon(
           Icons.edit,
           color: color3,
