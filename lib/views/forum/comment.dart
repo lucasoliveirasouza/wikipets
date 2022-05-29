@@ -103,15 +103,22 @@ class _CommentViewState extends State<CommentView> {
                                       children: [
                                         ListTile(
                                           title: Container(
-                                            child: Text(
-                                              lista[comment].user,
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: color3),
-                                            ),
                                             padding:
                                                 EdgeInsets.only(bottom: 10),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  lista[comment].user,
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: color3),
+                                                ),
+                                                Spacer(),
+                                                verifica(lista[comment]),
+                                              ],
+                                            ),
+                                            height: 35,
                                           ),
                                           subtitle: Text(
                                             lista[comment].description,
@@ -207,5 +214,22 @@ class _CommentViewState extends State<CommentView> {
         ),
       ),
     );
+  }
+
+  Widget verifica(Comment comment){
+    if(comment.user == name){
+      return  IconButton(
+        onPressed: () {
+          //Get.to(() => ForumEditView(forum: forum));
+        },
+        icon: Icon(
+          Icons.edit,
+          color: color3,
+          size: 18,
+        ),
+      );
+    }else{
+      return Container();
+    }
   }
 }
