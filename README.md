@@ -26,6 +26,8 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 * Disponibilizar opção de favoritar cada pet;
 * Mostrar lista de favoritos;
 * Criar fórum de dúvidas;
+* Editar um fórum;
+* Excluir um fórum;
 * Opção de cadastro de novas dúvidas;
 * Opção de responder outras dúvidas;
 * Buscar cães e gatos;
