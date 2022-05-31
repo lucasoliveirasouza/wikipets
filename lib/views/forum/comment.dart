@@ -7,6 +7,7 @@ import 'package:wikipets/models/comment.dart';
 import 'package:wikipets/models/forum.dart';
 import 'package:wikipets/service/comment_service.dart';
 import 'package:wikipets/service/user_service.dart';
+import 'package:wikipets/views/forum/comment_edit.dart';
 
 class CommentView extends StatefulWidget {
   Forum forum;
@@ -97,7 +98,7 @@ class _CommentViewState extends State<CommentView> {
                                         color: color3,
                                         width: 1,
                                       ),
-                                      borderRadius: BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Column(
                                       children: [
@@ -111,7 +112,8 @@ class _CommentViewState extends State<CommentView> {
                                                   lista[comment].user,
                                                   style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color: color3),
                                                 ),
                                                 Spacer(),
@@ -197,8 +199,9 @@ class _CommentViewState extends State<CommentView> {
                             Provider.of<CommentService>(context, listen: false)
                                 .commentAdd(comment);
                             description.text = "";
-                          }else{
-                            Get.snackbar("Error", "Inform the comment",backgroundColor: Colors.white);
+                          } else {
+                            Get.snackbar("Error", "Inform the comment",
+                                backgroundColor: Colors.white);
                           }
                         },
                         icon: Icon(
@@ -216,11 +219,11 @@ class _CommentViewState extends State<CommentView> {
     );
   }
 
-  Widget verifica(Comment comment){
-    if(comment.user == name){
-      return  IconButton(
+  Widget verifica(Comment comment) {
+    if (comment.user == name) {
+      return IconButton(
         onPressed: () {
-          //Get.to(() => ForumEditView(forum: forum));
+          Get.to(() => CommentEditView());
         },
         icon: Icon(
           Icons.edit,
@@ -228,7 +231,7 @@ class _CommentViewState extends State<CommentView> {
           size: 18,
         ),
       );
-    }else{
+    } else {
       return Container();
     }
   }
