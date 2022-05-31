@@ -18,19 +18,8 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 * https://docs.thedogapi.com/
 * https://docs.thecatapi.com/
 
-#### Requisitos:
-* Usuário realizar login;
-* Usuário realizar cadastro;
-* Listar cães e gatos;
-* Mostrar detalhes de cada pet;
-* Disponibilizar opção de favoritar cada pet;
-* Mostrar lista de favoritos;
-* Criar fórum de dúvidas;
-* Editar um fórum;
-* Excluir um fórum;
-* Opção de cadastro de novas dúvidas;
-* Opção de responder outras dúvidas;
-* Buscar cães e gatos;
+#### Descrição:
+O usuário pode cadastrar e logar no aplicativo. Uma vez logado, ele poderá consultar as listas de cães e gatos, buscado das APIs. Ele poderá favoritar algum pet e consultar a lista de favoritos. Poderá também cadastrar fórum de duvidas e comentários respondendo esses fóruns.
 
 ---
 
