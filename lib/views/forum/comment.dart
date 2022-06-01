@@ -223,7 +223,9 @@ class _CommentViewState extends State<CommentView> {
     if (comment.user == name) {
       return IconButton(
         onPressed: () {
-          Get.to(() => CommentEditView());
+          Get.to(() => CommentEditView(
+                comment: comment,
+              ));
         },
         icon: Icon(
           Icons.edit,
