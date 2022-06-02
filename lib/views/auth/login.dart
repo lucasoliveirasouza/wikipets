@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/service/auth_service.dart';
 import 'package:wikipets/views/auth/register.dart';
+import 'package:wikipets/views/auth/reset_password.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -95,8 +96,25 @@ class _LoginViewState extends State<LoginView> {
                   return null;
                 },
               ),
+              Container(
+                height: 30,
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResetPasswordView()));
+                  },
+                  child: Text(
+                    "Forgot password?",
+                    textAlign: TextAlign.end,
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
+              ),
               SizedBox(
-                height: 25,
+                height: 5,
               ),
               Container(
                 height: 55,
