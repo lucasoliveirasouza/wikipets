@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
+import 'package:wikipets/service/auth_service.dart';
 
 class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({Key? key}) : super(key: key);
@@ -74,7 +76,10 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
             Container(
               height: 55,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  resetar();
+                  Get.back();
+                },
                 child: Text("Redefinir senha"),
               ),
             ),
@@ -91,5 +96,19 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         ),
       ),
     );
+  }
+
+  resetar() async {
+    try {
+      await context.read<AuthService>().resetPassword(email.text);
+      print("Entrei");
+    } on AuthException catch (e) {
+      Get.snackbar(
+        "Erro",
+        e.message,
+        backgroundColor: color1,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
   }
 }
