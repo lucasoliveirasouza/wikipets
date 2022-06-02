@@ -65,6 +65,7 @@ class AuthService extends ChangeNotifier {
 
   resetPassword(String email) {
     if (usuario != null) {
+      print("Entrei");
       try {
         print(_auth.sendPasswordResetEmail(email: email));
       } on FirebaseAuthException catch (e) {

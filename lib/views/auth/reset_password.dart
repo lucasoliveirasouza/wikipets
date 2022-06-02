@@ -101,7 +101,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
   resetar() async {
     try {
       await context.read<AuthService>().resetPassword(email.text);
-      print("Entrei");
     } on AuthException catch (e) {
       Get.snackbar(
         "Erro",
