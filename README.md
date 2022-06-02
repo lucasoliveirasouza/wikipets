@@ -19,7 +19,7 @@ Também faz uso de duas APIs rest para busca de dados desses pets:
 * https://docs.thecatapi.com/
 
 #### Descrição:
-O usuário pode cadastrar e logar no aplicativo. Uma vez logado, ele poderá consultar as listas de cães e gatos, buscado das APIs. Ele poderá favoritar algum pet e consultar a lista de favoritos. Poderá também cadastrar fórum de duvidas e comentários respondendo esses fóruns.
+O usuário pode cadastrar e logar no aplicativo. Uma vez logado, ele poderá consultar as listas de cães e gatos, buscado das APIs. Ele poderá favoritar algum pet e consultar a lista de favoritos, divida entre cães e gatos. Poderá também cadastrar fórum de duvidas e comentários respondendo esses fóruns.
 
 ---
 
