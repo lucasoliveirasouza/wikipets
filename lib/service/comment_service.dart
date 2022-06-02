@@ -20,7 +20,7 @@ class CommentService extends ChangeNotifier {
 
       snapshot.docs.forEach((d) {
         Comment comment = Comment(
-            "", d["user"], d["description"], d["subject"], d["idForum"]);
+            d.id, d["user"], d["description"], d["subject"], d["idForum"]);
         _comments.add(comment);
       });
       notifyListeners();
@@ -42,6 +42,42 @@ class CommentService extends ChangeNotifier {
       _comments.add(comment);
       notifyListeners();
       return "Registered comment!";
+    } on FirebaseException catch (e) {
+      return e.message;
+    }
+  }
+
+  String? editComment(Comment comment, String description) {
+    try {
+      var collection = FirebaseFirestore.instance.collection('comment');
+      collection.doc(comment.id).update({
+        'description': description,
+        'subject': comment.subject,
+        'user': comment.user,
+        'idForum': comment.idForum,
+      });
+
+      _comments.forEach((element) {
+        if (element.description == comment.description) {
+          element.description = description;
+          notifyListeners();
+        }
+      });
+
+      return "Edited comment!";
+    } on FirebaseException catch (e) {
+      return e.message;
+    }
+  }
+
+  String? removeComment(Comment comment) {
+    try {
+      var collection = FirebaseFirestore.instance.collection('comment');
+      collection.doc(comment.id).delete();
+
+      _comments.removeWhere((element) => element.id == comment.id);
+      notifyListeners();
+      return "Removed comment!";
     } on FirebaseException catch (e) {
       return e.message;
     }

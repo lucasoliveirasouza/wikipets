@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:wikipets/constantes.dart';
 import 'package:wikipets/models/comment.dart';
+import 'package:wikipets/service/comment_service.dart';
 
 class CommentEditView extends StatefulWidget {
   Comment comment;
@@ -59,12 +62,12 @@ class _CommentEditViewState extends State<CommentEditView> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      /* Get.snackbar(
+                      Get.snackbar(
                         "Forum registration",
-                        Provider.of<ForumService>(context, listen: false)
-                            .editForum(widget.forum, description.text)
+                        Provider.of<CommentService>(context, listen: false)
+                            .editComment(widget.comment, description.text)
                             .toString(),
-                      );*/
+                      );
                       Navigator.of(context).pop();
                     }
                   },
@@ -80,12 +83,12 @@ class _CommentEditViewState extends State<CommentEditView> {
               Center(
                 child: IconButton(
                   onPressed: () {
-                    /*Get.snackbar(
+                    Get.snackbar(
                       "Forum delete",
-                      Provider.of<ForumService>(context, listen: false)
-                          .removeForum(widget.forum)
+                      Provider.of<CommentService>(context, listen: false)
+                          .removeComment(widget.comment)
                           .toString(),
-                    );*/
+                    );
                     Navigator.of(context).pop();
                   },
                   icon: Icon(

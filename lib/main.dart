@@ -23,10 +23,10 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (context) => CatService()),
       ChangeNotifierProvider(create: (context) => DogService()),
+      ChangeNotifierProvider(create: (context) => CatFavoriteRepository()),
       ChangeNotifierProvider(create: (context) => AuthService()),
       ChangeNotifierProvider(create: (context) => ForumService()),
       ChangeNotifierProvider(create: (context) => CommentService()),
-      ChangeNotifierProvider(create: (context) => CatFavoriteRepository()),
     ],
     child: MyApp(),
   ));
@@ -35,11 +35,9 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Wiki Pets',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
@@ -49,6 +47,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      title: 'Wiki Pets',
       home: const AuthCheck(),
     );
   }
