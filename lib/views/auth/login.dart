@@ -135,7 +135,7 @@ class _LoginViewState extends State<LoginView> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => RegisterView()));
                 },
-                child: Text("Register  now"),
+                child: Text("Register now"),
               ),
             ],
           ),
